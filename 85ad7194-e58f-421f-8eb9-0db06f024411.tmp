@@ -1,0 +1,1885 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>QuickFix Technicians — Nairobi's #1 Technical Services Platform</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Barlow:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --yellow:#FFD600;--yellow-dark:#E6C000;--yellow-light:#FFF9C4;
+  --black:#0A0A0A;--black-soft:#111111;--black-mid:#1A1A1A;
+  --gray:#252525;--gray-mid:#555;--gray-light:#888;
+  --border:#2A2A2A;--white:#fff;--white-soft:#F0F0F0;
+  --success:#22C55E;--danger:#EF4444;--orange:#FF6B00;
+  --blue:#3B82F6;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;font-size:16px;}
+body{background:var(--black);color:var(--white);font-family:'Barlow',sans-serif;line-height:1.6;overflow-x:hidden;}
+::-webkit-scrollbar{width:4px;}::-webkit-scrollbar-track{background:var(--black-soft);}::-webkit-scrollbar-thumb{background:var(--yellow);border-radius:2px;}
+a{color:inherit;text-decoration:none;}
+input,textarea,select,button{font-family:'Barlow',sans-serif;}
+img{max-width:100%;}
+
+/* ANIMATIONS */
+@keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
+@keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes glow{0%,100%{box-shadow:0 0 20px rgba(255,214,0,.25)}50%{box-shadow:0 0 50px rgba(255,214,0,.6)}}
+@keyframes slideDown{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:translateY(0)}}
+@keyframes countUp{from{opacity:0;transform:scale(.8)}to{opacity:1;transform:scale(1)}}
+
+.fade-up{animation:fadeUp .6s ease both;}
+.fade-in{animation:fadeIn .4s ease both;}
+.float{animation:float 3s ease-in-out infinite;}
+
+/* PAGES */
+.page{display:none;min-height:100vh;}
+.page.active{display:block;}
+
+/* ── NAVBAR ── */
+#navbar{
+  position:fixed;top:0;left:0;right:0;z-index:9999;
+  padding:0 32px;height:68px;display:flex;align-items:center;justify-content:space-between;
+  transition:background .3s,border-color .3s,backdrop-filter .3s;
+}
+#navbar.scrolled{
+  background:rgba(10,10,10,.94);border-bottom:1px solid var(--border);
+  backdrop-filter:blur(14px);
+}
+.nav-logo{display:flex;align-items:center;gap:10px;cursor:pointer;}
+.nav-logo-icon{width:38px;height:38px;background:var(--yellow);border-radius:8px;display:flex;align-items:center;justify-content:center;}
+.nav-logo-text{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:18px;line-height:1;}
+.nav-logo-sub{font-size:9px;color:var(--yellow);letter-spacing:.12em;font-weight:700;}
+.nav-links{display:flex;gap:28px;align-items:center;}
+.nav-link{font-size:14px;font-weight:500;color:var(--gray-light);cursor:pointer;transition:color .2s;white-space:nowrap;}
+.nav-link:hover,.nav-link.active{color:var(--yellow);}
+.nav-actions{display:flex;gap:10px;align-items:center;}
+.hamburger{display:none;background:none;border:none;color:var(--white);cursor:pointer;padding:4px;}
+.mobile-menu{display:none;position:fixed;top:68px;left:0;right:0;background:var(--black-soft);border-bottom:1px solid var(--border);z-index:9998;padding:20px 24px;animation:slideDown .25s ease;}
+.mobile-menu.open{display:block;}
+.mobile-link{display:block;padding:13px 0;border-bottom:1px solid var(--border);color:var(--white);font-weight:500;cursor:pointer;}
+.mobile-link:last-child{border-bottom:none;}
+
+/* ── BUTTONS ── */
+.btn{display:inline-flex;align-items:center;gap:8px;border:none;border-radius:6px;cursor:pointer;font-family:'Barlow',sans-serif;font-weight:700;transition:all .2s;white-space:nowrap;text-decoration:none;}
+.btn-sm{padding:8px 16px;font-size:13px;}
+.btn-md{padding:12px 24px;font-size:15px;}
+.btn-lg{padding:15px 32px;font-size:17px;}
+.btn-xl{padding:18px 40px;font-size:18px;}
+.btn-primary{background:var(--yellow);color:var(--black);}
+.btn-primary:hover{background:var(--yellow-dark);transform:translateY(-1px);box-shadow:0 6px 24px rgba(255,214,0,.3);}
+.btn-outline{background:transparent;color:var(--white);border:2px solid var(--white);}
+.btn-outline:hover{background:var(--white);color:var(--black);}
+.btn-outline-yellow{background:transparent;color:var(--yellow);border:2px solid var(--yellow);}
+.btn-outline-yellow:hover{background:var(--yellow);color:var(--black);}
+.btn-ghost{background:transparent;color:var(--white);border:1px solid var(--border);}
+.btn-ghost:hover{background:var(--gray);}
+.btn-success{background:var(--success);color:var(--white);}
+.btn-success:hover{background:#16a34a;}
+.btn-danger{background:var(--danger);color:var(--white);}
+.btn-danger:hover{background:#dc2626;}
+.btn-whatsapp{background:#25D366;color:var(--white);}
+.btn-whatsapp:hover{background:#128C7E;}
+
+/* ── BADGES ── */
+.badge{display:inline-flex;align-items:center;gap:4px;padding:3px 10px;border-radius:99px;font-size:11px;font-weight:700;letter-spacing:.05em;}
+.badge-yellow{background:rgba(255,214,0,.15);color:var(--yellow);border:1px solid rgba(255,214,0,.3);}
+.badge-green{background:rgba(34,197,94,.15);color:var(--success);border:1px solid rgba(34,197,94,.3);}
+.badge-orange{background:rgba(255,107,0,.15);color:var(--orange);border:1px solid rgba(255,107,0,.3);}
+.badge-blue{background:rgba(59,130,246,.15);color:var(--blue);border:1px solid rgba(59,130,246,.3);}
+.badge-red{background:rgba(239,68,68,.15);color:var(--danger);border:1px solid rgba(239,68,68,.3);}
+
+/* ── FORM ELEMENTS ── */
+.form-group{margin-bottom:18px;}
+.form-label{display:block;font-size:12px;font-weight:700;color:var(--gray-light);margin-bottom:7px;text-transform:uppercase;letter-spacing:.07em;}
+.form-input{width:100%;padding:13px 16px;background:var(--gray);border:1px solid var(--border);border-radius:7px;color:var(--white);font-size:15px;outline:none;transition:border-color .2s,box-shadow .2s;}
+.form-input:focus{border-color:var(--yellow);box-shadow:0 0 0 3px rgba(255,214,0,.12);}
+.form-select{width:100%;padding:13px 16px;background:var(--gray);border:1px solid var(--border);border-radius:7px;color:var(--white);font-size:15px;outline:none;cursor:pointer;-webkit-appearance:none;}
+.form-textarea{width:100%;padding:13px 16px;background:var(--gray);border:1px solid var(--border);border-radius:7px;color:var(--white);font-size:15px;outline:none;resize:vertical;font-family:'Barlow',sans-serif;transition:border-color .2s;}
+.form-textarea:focus{border-color:var(--yellow);}
+.input-icon-wrap{position:relative;}
+.input-icon-wrap .form-input{padding-left:42px;}
+.input-icon{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:var(--gray-light);}
+
+/* ── SECTION TITLE ── */
+.section-title{text-align:center;margin-bottom:56px;}
+.section-title h2{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(30px,5vw,50px);margin-top:12px;line-height:1.05;}
+.section-title p{margin-top:14px;color:var(--gray-light);max-width:540px;margin-left:auto;margin-right:auto;font-size:16px;line-height:1.75;}
+
+/* ── CARDS ── */
+.card{background:var(--black-mid);border:1px solid var(--border);border-radius:14px;overflow:hidden;transition:all .3s;}
+.card:hover{border-color:var(--yellow);transform:translateY(-5px);box-shadow:0 16px 40px rgba(255,214,0,.12);}
+.tech-card{cursor:pointer;}
+
+/* ── GRID LAYOUTS ── */
+.grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;}
+.grid-auto{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:20px;}
+.grid-pricing{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;}
+
+/* ── STARS ── */
+.stars{display:inline-flex;gap:2px;}
+.star{color:var(--gray);}
+.star.filled{color:var(--yellow);}
+
+/* ── CONTAINER ── */
+.container{max-width:1140px;margin:0 auto;padding:0 24px;}
+.section{padding:88px 0;}
+.section-dark{background:var(--black);}
+.section-soft{background:var(--black-soft);}
+
+/* ── HERO ── */
+#hero{
+  min-height:100vh;
+  background:linear-gradient(160deg,#0a0a0a 0%,#141400 50%,#0f0f0f 100%);
+  display:flex;align-items:center;justify-content:center;
+  padding:100px 24px 60px;text-align:center;position:relative;overflow:hidden;
+}
+.hero-grid-bg{
+  position:absolute;inset:0;pointer-events:none;
+  background-image:linear-gradient(rgba(255,214,0,.05) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,214,0,.05) 1px,transparent 1px);
+  background-size:64px 64px;
+}
+.hero-glow-1{position:absolute;top:5%;left:5%;width:400px;height:400px;border-radius:50%;background:var(--yellow);opacity:.04;filter:blur(90px);pointer-events:none;}
+.hero-glow-2{position:absolute;bottom:10%;right:8%;width:500px;height:500px;border-radius:50%;background:var(--orange);opacity:.04;filter:blur(110px);pointer-events:none;}
+.hero-float-icon{position:absolute;opacity:.12;}
+.hero-content{position:relative;max-width:800px;}
+.live-pill{display:inline-flex;align-items:center;gap:8px;padding:7px 18px;border-radius:99px;background:rgba(255,214,0,.1);border:1px solid rgba(255,214,0,.3);margin-bottom:28px;font-size:13px;color:var(--yellow);font-weight:600;}
+.live-dot{width:8px;height:8px;border-radius:50%;background:var(--success);animation:pulse 2s infinite;}
+.hero-title{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(46px,9vw,90px);line-height:.98;letter-spacing:-.02em;margin-bottom:22px;}
+.hero-title span{color:var(--yellow);}
+.hero-sub{font-size:clamp(15px,2vw,19px);color:var(--gray-light);max-width:580px;margin:0 auto 44px;line-height:1.75;}
+.search-bar{
+  background:var(--black-soft);border:1px solid var(--border);border-radius:12px;
+  padding:16px;display:flex;gap:10px;flex-wrap:wrap;margin-bottom:36px;
+  box-shadow:0 0 60px rgba(255,214,0,.08);text-align:left;
+}
+.search-bar input,.search-bar select{flex:1;min-width:160px;padding:11px 14px;background:var(--gray);border:1px solid var(--border);border-radius:7px;color:var(--white);font-size:15px;outline:none;}
+.search-bar input:focus{border-color:var(--yellow);}
+.hero-ctas{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;}
+
+/* ── MARQUEE ── */
+.marquee-bar{background:var(--yellow);padding:15px 0;overflow:hidden;}
+.marquee-track{display:flex;animation:marquee 22s linear infinite;width:max-content;}
+.marquee-item{display:flex;align-items:center;gap:28px;padding:0 48px;}
+.marquee-val{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:22px;color:var(--black);}
+.marquee-label{font-weight:600;color:rgba(0,0,0,.7);font-size:14px;}
+.marquee-sep{color:rgba(0,0,0,.3);font-size:26px;}
+
+/* ── SERVICES GRID ── */
+.service-card{
+  background:var(--black-mid);border:1px solid var(--border);border-radius:14px;
+  padding:30px;cursor:pointer;transition:all .3s;
+}
+.service-card:hover{transform:translateY(-6px);}
+.service-icon-box{width:56px;height:56px;border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:18px;font-size:26px;}
+.service-card h3{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:22px;margin-bottom:8px;}
+.service-card p{color:var(--gray-light);font-size:14px;line-height:1.7;}
+.service-more{display:flex;align-items:center;gap:4px;margin-top:18px;font-size:13px;font-weight:700;}
+
+/* ── TECH CARD ── */
+.tech-card-inner{padding:22px;}
+.tech-avatar{width:58px;height:58px;border-radius:12px;background:var(--gray);display:flex;align-items:center;justify-content:center;font-size:30px;position:relative;flex-shrink:0;}
+.verified-badge{position:absolute;bottom:-5px;right:-5px;width:20px;height:20px;border-radius:50%;background:var(--success);display:flex;align-items:center;justify-content:center;border:2px solid var(--black-mid);}
+.tech-info{flex:1;min-width:0;}
+.tech-name{font-weight:700;font-size:16px;margin-bottom:4px;}
+.tech-meta{display:flex;gap:14px;font-size:13px;color:var(--gray-light);margin-top:12px;flex-wrap:wrap;}
+.tech-services-row{display:flex;gap:6px;flex-wrap:wrap;margin-top:14px;}
+.tech-ctas{display:flex;gap:8px;margin-top:16px;padding-top:14px;border-top:1px solid var(--border);}
+.avail-dot{width:8px;height:8px;border-radius:50%;display:inline-block;margin-right:4px;}
+
+/* ── HOW IT WORKS ── */
+.step-icon{width:76px;height:76px;border-radius:50%;background:var(--yellow);display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-size:30px;position:relative;}
+.step-num{position:absolute;top:-6px;right:-6px;width:26px;height:26px;border-radius:50%;background:var(--black);border:2px solid var(--yellow);display:flex;align-items:center;justify-content:center;font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:13px;color:var(--yellow);}
+.step-title{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:22px;margin-bottom:10px;text-align:center;}
+.step-text{color:var(--gray-light);text-align:center;font-size:15px;line-height:1.75;}
+
+/* ── TESTIMONIAL ── */
+.testimonial-card{background:var(--black-soft);border:1px solid var(--border);border-radius:14px;padding:26px;}
+.t-text{color:var(--white-soft);line-height:1.75;font-size:15px;margin:14px 0 18px;}
+.t-author{display:flex;align-items:center;gap:12px;}
+.t-avatar{width:42px;height:42px;border-radius:50%;background:var(--gray);display:flex;align-items:center;justify-content:center;font-size:22px;}
+.t-name{font-weight:700;font-size:14px;}
+.t-detail{color:var(--gray-light);font-size:12px;margin-top:2px;}
+
+/* ── PRICING ── */
+.pricing-card{background:var(--black-mid);border:1px solid var(--border);border-radius:12px;padding:22px;display:flex;justify-content:space-between;align-items:center;gap:16px;transition:border-color .2s;}
+.pricing-card:hover{border-color:var(--yellow);}
+.pricing-service{font-weight:600;font-size:15px;margin-bottom:6px;}
+.pricing-time{color:var(--gray-light);font-size:13px;display:flex;align-items:center;gap:5px;}
+.pricing-amount{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:20px;white-space:nowrap;}
+
+/* ── PROFILE PAGE ── */
+.profile-header{background:linear-gradient(135deg,var(--black-mid),var(--gray));padding:40px;display:flex;gap:28px;flex-wrap:wrap;align-items:flex-start;}
+.profile-avatar-wrap{position:relative;flex-shrink:0;}
+.profile-avatar{width:110px;height:110px;border-radius:18px;background:var(--gray);display:flex;align-items:center;justify-content:center;font-size:56px;border:3px solid var(--yellow);}
+.profile-verified{position:absolute;bottom:-8px;right:-8px;background:var(--success);border-radius:99px;padding:4px 10px;font-size:11px;font-weight:800;color:var(--white);border:2px solid var(--black-soft);display:flex;align-items:center;gap:4px;}
+.profile-body{padding:36px;}
+.portfolio-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px;}
+.portfolio-item{background:var(--gray);border-radius:10px;aspect-ratio:4/3;display:flex;flex-direction:column;align-items:center;justify-content:center;border:1px solid var(--border);}
+.portfolio-item span:first-child{font-size:30px;}
+.portfolio-item span:last-child{font-size:11px;color:var(--gray-light);margin-top:8px;text-align:center;padding:0 8px;}
+
+/* ── REQUEST FORM ── */
+.emergency-toggle{display:flex;align-items:center;justify-content:space-between;padding:16px;border-radius:10px;border:2px solid var(--border);cursor:pointer;margin-bottom:22px;transition:all .2s;}
+.emergency-toggle.on{border-color:var(--danger);background:rgba(239,68,68,.08);}
+.toggle-switch{width:46px;height:26px;border-radius:99px;background:var(--gray);display:flex;align-items:center;padding:3px;transition:background .2s;}
+.toggle-switch.on{background:var(--danger);}
+.toggle-knob{width:20px;height:20px;border-radius:50%;background:var(--white);transition:transform .2s;}
+.toggle-switch.on .toggle-knob{transform:translateX(20px);}
+.step-progress{display:flex;align-items:center;gap:0;margin-bottom:32px;}
+.step-dot{width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0;}
+.step-dot.done{background:var(--success);color:var(--white);}
+.step-dot.active{background:var(--yellow);color:var(--black);}
+.step-dot.inactive{background:var(--gray);color:var(--gray-light);}
+.step-line{flex:1;height:2px;}
+.step-line.done{background:var(--success);}
+.step-line.inactive{background:var(--border);}
+.upload-area{border:2px dashed var(--border);border-radius:10px;padding:36px;text-align:center;cursor:pointer;transition:border-color .2s;}
+.upload-area:hover{border-color:var(--yellow);}
+.time-slot{padding:12px;text-align:center;border-radius:8px;border:1px solid var(--border);cursor:pointer;font-size:14px;color:var(--gray-light);transition:all .2s;}
+.time-slot:hover:not(.booked){border-color:var(--yellow);color:var(--yellow);}
+.time-slot.selected{border-color:var(--yellow);color:var(--yellow);background:rgba(255,214,0,.1);}
+.time-slot.booked{opacity:.4;cursor:not-allowed;text-decoration:line-through;}
+.slots-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:20px;}
+
+/* ── DASHBOARD ── */
+.dash-stat{background:var(--black-soft);border:1px solid var(--border);border-radius:14px;padding:22px;}
+.dash-stat-val{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:32px;margin-top:6px;}
+.dash-stat-label{color:var(--gray-light);font-size:13px;}
+.booking-row{padding:16px 24px;border-bottom:1px solid var(--border);display:flex;gap:16px;align-items:center;flex-wrap:wrap;}
+.booking-row:last-child{border-bottom:none;}
+
+/* ── ADMIN ── */
+.tab-bar{display:flex;background:var(--gray);border-radius:8px;overflow:hidden;border:1px solid var(--border);width:fit-content;margin-bottom:28px;}
+.tab-btn{padding:10px 22px;border:none;cursor:pointer;font-family:'Barlow',sans-serif;font-weight:600;font-size:13px;text-transform:capitalize;background:transparent;color:var(--gray-light);transition:all .2s;}
+.tab-btn.active{background:var(--yellow);color:var(--black);}
+.pending-row{padding:16px 24px;border-bottom:1px solid var(--border);display:flex;gap:14px;align-items:center;flex-wrap:wrap;}
+.pending-row:last-child{border-bottom:none;}
+
+/* ── EMERGENCY CTA ── */
+.emergency-section{padding:72px 0;background:linear-gradient(135deg,#1a0a00,#0a0a0a);border-top:1px solid var(--border);}
+
+/* ── CONTACT ── */
+.contact-item{display:flex;gap:16px;margin-bottom:28px;}
+.contact-icon-box{width:48px;height:48px;border-radius:10px;background:rgba(255,214,0,.12);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;}
+.contact-label{font-weight:700;margin-bottom:4px;}
+.contact-val{color:var(--gray-light);font-size:14px;line-height:1.75;}
+.map-placeholder{background:var(--black-soft);border:1px solid var(--border);border-radius:12px;height:220px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;color:var(--gray-mid);}
+
+/* ── ABOUT ── */
+.trust-card{background:var(--black-soft);border:1px solid var(--border);border-radius:14px;padding:28px;}
+.trust-icon{width:52px;height:52px;border-radius:12px;background:rgba(255,214,0,.12);display:flex;align-items:center;justify-content:center;font-size:24px;margin-bottom:16px;}
+
+/* ── LOGIN / REGISTER ── */
+.auth-page{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:100px 24px 40px;background:radial-gradient(ellipse 70% 50% at 50% 0%,rgba(255,214,0,.08),transparent),var(--black);}
+.auth-box{width:100%;max-width:430px;}
+.auth-logo{width:58px;height:58px;background:var(--yellow);border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:28px;margin:0 auto 20px;}
+.auth-title{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:34px;text-align:center;margin-bottom:28px;}
+.auth-card{background:var(--black-soft);border:1px solid var(--border);border-radius:16px;padding:32px;}
+.role-switcher{display:flex;border-radius:8px;overflow:hidden;border:1px solid var(--border);margin-bottom:24px;}
+.role-btn{flex:1;padding:10px;border:none;cursor:pointer;font-family:'Barlow',sans-serif;font-weight:700;font-size:13px;text-transform:capitalize;background:var(--gray);color:var(--gray-light);transition:all .2s;}
+.role-btn.active{background:var(--yellow);color:var(--black);}
+
+/* ── SUCCESS SCREEN ── */
+.success-screen{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:100px 24px;text-align:center;}
+.success-icon{width:90px;height:90px;border-radius:50%;background:rgba(34,197,94,.15);border:2px solid var(--success);display:flex;align-items:center;justify-content:center;margin:0 auto 24px;font-size:40px;}
+
+/* ── FOOTER ── */
+footer{background:var(--black-soft);border-top:1px solid var(--border);padding:56px 0 24px;}
+.footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:36px;margin-bottom:44px;}
+.footer-brand p{color:var(--gray-light);font-size:13px;line-height:1.75;margin-top:12px;}
+.footer-col h4{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:16px;color:var(--yellow);margin-bottom:16px;}
+.footer-link{display:block;color:var(--gray-light);font-size:14px;margin-bottom:9px;cursor:pointer;transition:color .2s;}
+.footer-link:hover{color:var(--white);}
+.footer-bottom{border-top:1px solid var(--border);padding-top:20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;}
+.footer-copy{color:var(--gray-mid);font-size:12px;}
+.lang-btns{display:flex;gap:14px;}
+.lang-btn{color:var(--gray-light);font-size:12px;cursor:pointer;transition:color .2s;}
+.lang-btn:hover{color:var(--yellow);}
+.social-row{display:flex;gap:10px;margin-top:16px;}
+.social-btn{width:34px;height:34px;border-radius:7px;background:var(--gray);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:16px;transition:background .2s;}
+.social-btn:hover{background:var(--yellow);}
+
+/* ── OVERLAY MODAL ── */
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.8);z-index:10000;align-items:center;justify-content:center;padding:24px;}
+.modal-overlay.open{display:flex;}
+.modal-box{background:var(--black-soft);border:1px solid var(--border);border-radius:16px;max-width:560px;width:100%;max-height:90vh;overflow-y:auto;animation:fadeUp .3s ease;}
+.modal-header{padding:24px 28px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;}
+.modal-body{padding:28px;}
+.modal-close{background:none;border:none;color:var(--gray-light);cursor:pointer;font-size:22px;line-height:1;}
+
+/* ── NOTIFICATION TOAST ── */
+.toast{position:fixed;bottom:24px;right:24px;background:var(--black-soft);border:1px solid var(--border);border-radius:10px;padding:14px 20px;z-index:20000;display:flex;align-items:center;gap:12px;animation:slideDown .3s ease;min-width:280px;box-shadow:0 8px 32px rgba(0,0,0,.5);}
+.toast-icon{font-size:22px;}
+.toast-msg{font-size:14px;font-weight:500;}
+.toast.success .toast-icon::before{content:'✅';}
+.toast.error .toast-icon::before{content:'❌';}
+.toast.info .toast-icon::before{content:'ℹ️';}
+
+/* ── RESPONSIVE ── */
+@media(max-width:1024px){.footer-grid{grid-template-columns:1fr 1fr;}}
+@media(max-width:768px){
+  .nav-links{display:none;}
+  .hamburger{display:block;}
+  .grid-4,.grid-3{grid-template-columns:repeat(2,1fr);}
+  .grid-2{grid-template-columns:1fr;}
+  .footer-grid{grid-template-columns:1fr 1fr;}
+  .profile-header{flex-direction:column;}
+  .booking-row{flex-direction:column;align-items:flex-start;}
+  .hero-title{font-size:clamp(38px,10vw,60px);}
+}
+@media(max-width:480px){
+  .grid-4,.grid-3,.grid-2{grid-template-columns:1fr;}
+  .footer-grid{grid-template-columns:1fr;}
+  .search-bar{flex-direction:column;}
+  .hero-ctas{flex-direction:column;align-items:stretch;}
+  .hero-ctas .btn{justify-content:center;}
+  #navbar{padding:0 16px;}
+  .container{padding:0 16px;}
+  .section{padding:56px 0;}
+  .slots-grid{grid-template-columns:repeat(2,1fr);}
+}
+
+/* ── VISIBILITY HELPERS ── */
+.hidden{display:none!important;}
+.visible{display:block!important;}
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════ NAVBAR ══════════════════════ -->
+<nav id="navbar">
+  <div class="nav-logo" onclick="showPage('home')">
+    <div class="nav-logo-icon">⚡</div>
+    <div>
+      <div class="nav-logo-text">QuickFix</div>
+      <div class="nav-logo-sub">TECHNICIANS</div>
+    </div>
+  </div>
+  <div class="nav-links">
+    <span class="nav-link" onclick="showPage('services')">Services</span>
+    <span class="nav-link" onclick="showPage('search')">Find Technicians</span>
+    <span class="nav-link" onclick="showPage('pricing')">Pricing</span>
+    <span class="nav-link" onclick="showPage('about')">About</span>
+    <span class="nav-link" onclick="showPage('contact')">Contact</span>
+  </div>
+  <div class="nav-actions">
+    <span id="nav-user-area">
+      <button class="btn btn-ghost btn-sm" onclick="showPage('login')">Login</button>
+      <button class="btn btn-primary btn-sm" onclick="showPage('request')">Request Service</button>
+    </span>
+    <span id="nav-auth-area" class="hidden">
+      <button class="btn btn-ghost btn-sm" id="nav-dash-btn" onclick="goToDash()">👤 My Dashboard</button>
+      <button class="btn btn-outline-yellow btn-sm" onclick="logout()">Sign Out</button>
+    </span>
+    <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">☰</button>
+  </div>
+</nav>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobile-menu">
+  <span class="mobile-link" onclick="showPage('services');toggleMenu()">Services</span>
+  <span class="mobile-link" onclick="showPage('search');toggleMenu()">Find Technicians</span>
+  <span class="mobile-link" onclick="showPage('pricing');toggleMenu()">Pricing</span>
+  <span class="mobile-link" onclick="showPage('about');toggleMenu()">About</span>
+  <span class="mobile-link" onclick="showPage('contact');toggleMenu()">Contact</span>
+  <div style="display:flex;gap:10px;margin-top:16px;flex-wrap:wrap;">
+    <button class="btn btn-ghost btn-sm" onclick="showPage('login');toggleMenu()">Login</button>
+    <button class="btn btn-primary btn-sm" onclick="showPage('request');toggleMenu()">Request Service</button>
+  </div>
+</div>
+
+<!-- ══════════════════════ PAGES ══════════════════════ -->
+
+<!-- ░░░░░░ HOME PAGE ░░░░░░ -->
+<div id="page-home" class="page active">
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-grid-bg"></div>
+    <div class="hero-glow-1"></div>
+    <div class="hero-glow-2"></div>
+    <div class="hero-float-icon float" style="top:14%;left:7%;font-size:44px;animation-delay:0s;">⚡</div>
+    <div class="hero-float-icon float" style="top:22%;right:6%;font-size:40px;animation-delay:.6s;">☀️</div>
+    <div class="hero-float-icon float" style="bottom:28%;left:5%;font-size:38px;animation-delay:1.2s;">📷</div>
+    <div class="hero-float-icon float" style="bottom:22%;right:7%;font-size:38px;animation-delay:1.8s;">📶</div>
+
+    <div class="hero-content fade-up">
+      <div class="live-pill">
+        <span class="live-dot"></span>
+        Serving 15+ Nairobi Locations — Available Now
+      </div>
+      <h1 class="hero-title">
+        FAST, RELIABLE<br/>
+        <span>TECHNICAL SERVICES</span><br/>
+        AT YOUR FINGERTIPS
+      </h1>
+      <p class="hero-sub">Connect with verified electricians, solar engineers, CCTV installers &amp; network technicians across Nairobi. Instant booking, guaranteed quality.</p>
+
+      <div class="search-bar">
+        <div class="input-icon-wrap" style="flex:1;min-width:180px;">
+          <span class="input-icon">🔍</span>
+          <input class="form-input" id="hero-search" placeholder="What service do you need?" style="padding-left:40px;" oninput="filterSearch()"/>
+        </div>
+        <select class="form-select" id="hero-loc" style="min-width:160px;flex:1;">
+          <option value="">All Locations</option>
+          <option>Westlands</option><option>Kilimani</option><option>Karen</option>
+          <option>Embakasi</option><option>Kasarani</option><option>Kileleshwa</option>
+          <option>Lavington</option><option>Ngong Road</option><option>CBD</option>
+          <option>Thika Road</option><option>Lang'ata</option><option>South B</option>
+          <option>Ruaka</option><option>Kikuyu</option>
+        </select>
+        <button class="btn btn-primary btn-md" onclick="showPage('search')">🔍 Find Now</button>
+      </div>
+
+      <div class="hero-ctas">
+        <button class="btn btn-outline-yellow btn-xl" onclick="showPage('request')">⚡ Request Service</button>
+        <button class="btn btn-outline btn-xl" onclick="showPage('search')">🔍 Browse Technicians</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- MARQUEE STATS -->
+  <div class="marquee-bar">
+    <div class="marquee-track">
+      <div class="marquee-item"><span class="marquee-val">2,400+</span><span class="marquee-label">Jobs Completed</span><span class="marquee-sep">|</span></div>
+      <div class="marquee-item"><span class="marquee-val">850+</span><span class="marquee-label">Verified Technicians</span><span class="marquee-sep">|</span></div>
+      <div class="marquee-item"><span class="marquee-val">15+</span><span class="marquee-label">Nairobi Locations</span><span class="marquee-sep">|</span></div>
+      <div class="marquee-item"><span class="marquee-val">4.8★</span><span class="marquee-label">Average Rating</span><span class="marquee-sep">|</span></div>
+      <div class="marquee-item"><span class="marquee-val">24/7</span><span class="marquee-label">Emergency Service</span><span class="marquee-sep">|</span></div>
+      <!-- duplicate -->
+      <div class="marquee-item"><span class="marquee-val">2,400+</span><span class="marquee-label">Jobs Completed</span><span class="marquee-sep">|</span></div>
+      <div class="marquee-item"><span class="marquee-val">850+</span><span class="marquee-label">Verified Technicians</span><span class="marquee-sep">|</span></div>
+      <div class="marquee-item"><span class="marquee-val">15+</span><span class="marquee-label">Nairobi Locations</span><span class="marquee-sep">|</span></div>
+      <div class="marquee-item"><span class="marquee-val">4.8★</span><span class="marquee-label">Average Rating</span><span class="marquee-sep">|</span></div>
+      <div class="marquee-item"><span class="marquee-val">24/7</span><span class="marquee-label">Emergency Service</span><span class="marquee-sep">|</span></div>
+    </div>
+  </div>
+
+  <!-- SERVICES -->
+  <section class="section section-soft">
+    <div class="container">
+      <div class="section-title fade-up">
+        <span class="badge badge-yellow">OUR SERVICES</span>
+        <h2>Everything You Need, One Platform</h2>
+        <p>From electrical emergencies to full solar installations — our verified technicians handle it all.</p>
+      </div>
+      <div class="grid-4" id="home-services-grid">
+        <div class="service-card fade-up" style="animation-delay:.05s;" onclick="filterByService('electrical');showPage('search');" onmouseenter="this.style.borderColor='#FFD600';this.style.boxShadow='0 12px 36px rgba(255,214,0,.18)'" onmouseleave="this.style.borderColor='var(--border)';this.style.boxShadow=''">
+          <div class="service-icon-box" style="background:rgba(255,214,0,.15);border:1px solid rgba(255,214,0,.3);">⚡</div>
+          <h3>Electrical</h3>
+          <p>Wiring, repairs, DB boards, lighting installation &amp; maintenance.</p>
+          <div class="service-more" style="color:var(--yellow);">Find Technicians →</div>
+        </div>
+        <div class="service-card fade-up" style="animation-delay:.12s;" onclick="filterByService('solar');showPage('search');" onmouseenter="this.style.borderColor='#FF6B00';this.style.boxShadow='0 12px 36px rgba(255,107,0,.18)'" onmouseleave="this.style.borderColor='var(--border)';this.style.boxShadow=''">
+          <div class="service-icon-box" style="background:rgba(255,107,0,.15);border:1px solid rgba(255,107,0,.3);">☀️</div>
+          <h3>Solar Systems</h3>
+          <p>Panel installation, inverters, battery storage &amp; solar maintenance.</p>
+          <div class="service-more" style="color:var(--orange);">Find Technicians →</div>
+        </div>
+        <div class="service-card fade-up" style="animation-delay:.19s;" onclick="filterByService('cctv');showPage('search');" onmouseenter="this.style.borderColor='#22C55E';this.style.boxShadow='0 12px 36px rgba(34,197,94,.18)'" onmouseleave="this.style.borderColor='var(--border)';this.style.boxShadow=''">
+          <div class="service-icon-box" style="background:rgba(34,197,94,.15);border:1px solid rgba(34,197,94,.3);">📷</div>
+          <h3>CCTV &amp; Security</h3>
+          <p>Camera installation, DVR/NVR setup, access control &amp; alarms.</p>
+          <div class="service-more" style="color:var(--success);">Find Technicians →</div>
+        </div>
+        <div class="service-card fade-up" style="animation-delay:.26s;" onclick="filterByService('internet');showPage('search');" onmouseenter="this.style.borderColor='#3B82F6';this.style.boxShadow='0 12px 36px rgba(59,130,246,.18)'" onmouseleave="this.style.borderColor='var(--border)';this.style.boxShadow=''">
+          <div class="service-icon-box" style="background:rgba(59,130,246,.15);border:1px solid rgba(59,130,246,.3);">📶</div>
+          <h3>Internet &amp; WiFi</h3>
+          <p>Router setup, fibre installation, mesh WiFi &amp; structured cabling.</p>
+          <div class="service-more" style="color:var(--blue);">Find Technicians →</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TOP TECHNICIANS -->
+  <section class="section section-dark">
+    <div class="container">
+      <div class="section-title">
+        <span class="badge badge-yellow">TOP RATED</span>
+        <h2>Meet Our Verified Technicians</h2>
+        <p>All technicians are ID-verified, certified, and background-checked before joining the platform.</p>
+      </div>
+      <div class="grid-auto" id="home-tech-grid"></div>
+      <div style="text-align:center;margin-top:40px;">
+        <button class="btn btn-outline-yellow btn-lg" onclick="showPage('search')">View All Technicians →</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="section section-soft">
+    <div class="container">
+      <div class="section-title">
+        <span class="badge badge-yellow">HOW IT WORKS</span>
+        <h2>Get Help in 3 Simple Steps</h2>
+      </div>
+      <div class="grid-3">
+        <div style="text-align:center;" class="fade-up">
+          <div class="step-icon">🔍<div class="step-num">1</div></div>
+          <div class="step-title">Search &amp; Choose</div>
+          <p class="step-text">Browse verified technicians by service type, location, ratings, and availability.</p>
+        </div>
+        <div style="text-align:center;" class="fade-up" style="animation-delay:.15s;">
+          <div class="step-icon">📅<div class="step-num">2</div></div>
+          <div class="step-title">Book Instantly</div>
+          <p class="step-text">Pick your preferred date and time. Receive instant confirmation or quick approval.</p>
+        </div>
+        <div style="text-align:center;" class="fade-up" style="animation-delay:.3s;">
+          <div class="step-icon">✅<div class="step-num">3</div></div>
+          <div class="step-title">Job Done</div>
+          <p class="step-text">Technician arrives on time, completes the job. Rate them and pay via M-Pesa.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="section section-dark">
+    <div class="container">
+      <div class="section-title">
+        <span class="badge badge-yellow">REVIEWS</span>
+        <h2>What Customers Say</h2>
+      </div>
+      <div class="grid-3" id="home-testimonials"></div>
+    </div>
+  </section>
+
+  <!-- EMERGENCY CTA -->
+  <div class="emergency-section">
+    <div class="container" style="text-align:center;">
+      <div style="font-size:52px;margin-bottom:16px;">⚡</div>
+      <h2 style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(28px,5vw,52px);margin-bottom:14px;">Need <span style="color:var(--danger);">EMERGENCY</span> Service?</h2>
+      <p style="color:var(--gray-light);font-size:17px;max-width:520px;margin:0 auto 36px;line-height:1.75;">Power outage, security breach, network failure — our technicians are on standby 24/7 across Nairobi.</p>
+      <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
+        <button class="btn btn-danger btn-xl" onclick="showPage('request');setEmergency(true)">🚨 Emergency Request</button>
+        <button class="btn btn-ghost btn-xl">📞 Call: 0800 QUICKFIX</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- PRICING PREVIEW -->
+  <section class="section section-soft">
+    <div class="container">
+      <div class="section-title">
+        <span class="badge badge-yellow">PRICING</span>
+        <h2>Transparent, Fair Pricing</h2>
+        <p>No hidden charges. All prices are estimates — final quotes given before work begins. Payment via M-Pesa.</p>
+      </div>
+      <div class="grid-pricing" id="home-pricing-preview"></div>
+      <div style="text-align:center;margin-top:36px;">
+        <button class="btn btn-outline-yellow btn-lg" onclick="showPage('pricing')">See Full Pricing →</button>
+      </div>
+    </div>
+  </section>
+
+  <footer id="home-footer"></footer>
+</div>
+
+<!-- ░░░░░░ SEARCH PAGE ░░░░░░ -->
+<div id="page-search" class="page">
+  <div style="padding-top:68px;">
+    <div style="background:var(--black-soft);padding:32px 24px;border-bottom:1px solid var(--border);">
+      <div class="container">
+        <h1 style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:36px;margin-bottom:20px;">Find a Technician</h1>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;">
+          <div class="input-icon-wrap" style="flex:1;min-width:180px;">
+            <span class="input-icon">🔍</span>
+            <input class="form-input" id="search-q" placeholder="Name, service, or location…" style="padding-left:40px;" oninput="renderSearch()"/>
+          </div>
+          <select class="form-select" id="search-svc" style="min-width:160px;" onchange="renderSearch()">
+            <option value="all">All Services</option>
+            <option value="electrical">⚡ Electrical</option>
+            <option value="solar">☀️ Solar</option>
+            <option value="cctv">📷 CCTV</option>
+            <option value="internet">📶 Internet</option>
+          </select>
+          <select class="form-select" id="search-loc" style="min-width:150px;" onchange="renderSearch()">
+            <option value="">All Locations</option>
+            <option>Westlands</option><option>Kilimani</option><option>Karen</option>
+            <option>Embakasi</option><option>Kasarani</option><option>Kileleshwa</option>
+            <option>Lavington</option><option>Ngong Road</option><option>CBD</option>
+            <option>Thika Road</option><option>Lang'ata</option><option>South B</option><option>Ruaka</option>
+          </select>
+          <select class="form-select" id="search-sort" style="min-width:150px;" onchange="renderSearch()">
+            <option value="rating">Sort: Rating</option>
+            <option value="reviews">Sort: Reviews</option>
+            <option value="experience">Sort: Experience</option>
+          </select>
+          <label style="display:flex;align-items:center;gap:8px;cursor:pointer;padding:12px 16px;border-radius:7px;border:1px solid var(--border);font-size:14px;transition:all .2s;white-space:nowrap;" id="avail-label">
+            <input type="checkbox" id="search-avail" onchange="renderSearch();toggleAvailLabel()" style="display:none;"/>
+            <span id="avail-indicator" style="width:10px;height:10px;border-radius:50%;background:var(--gray-mid);display:inline-block;"></span>
+            Available Now
+          </label>
+        </div>
+      </div>
+    </div>
+    <div class="container" style="padding-top:32px;padding-bottom:60px;">
+      <p id="search-count" style="color:var(--gray-light);font-size:14px;margin-bottom:20px;"></p>
+      <div class="grid-auto" id="search-results"></div>
+    </div>
+  </div>
+  <footer id="search-footer"></footer>
+</div>
+
+<!-- ░░░░░░ SERVICES PAGE ░░░░░░ -->
+<div id="page-services" class="page">
+  <div style="padding-top:68px;">
+    <section class="section">
+      <div class="container">
+        <div class="section-title">
+          <span class="badge badge-yellow">ALL SERVICES</span>
+          <h2>What We Cover</h2>
+          <p>Specialized verified technicians for every technical need in your home or business.</p>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:24px;">
+          <div style="background:var(--black-soft);border-radius:16px;border:1px solid var(--border);padding:36px;display:grid;grid-template-columns:1fr auto;gap:28px;align-items:center;" class="card-no-hover">
+            <div style="display:flex;gap:22px;align-items:flex-start;">
+              <div style="width:72px;height:72px;border-radius:14px;background:rgba(255,214,0,.15);border:1px solid rgba(255,214,0,.3);display:flex;align-items:center;justify-content:center;font-size:34px;flex-shrink:0;">⚡</div>
+              <div>
+                <h2 style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:28px;margin-bottom:8px;color:var(--yellow);">Electrical Services</h2>
+                <p style="color:var(--gray-light);line-height:1.75;max-width:520px;">Complete electrical solutions for homes and businesses — from socket installations to full rewiring, DB board upgrades, power fault diagnosis, and industrial electrical work.</p>
+                <div style="display:flex;gap:8px;margin-top:14px;flex-wrap:wrap;">
+                  <span class="badge badge-yellow">Installation</span><span class="badge badge-yellow">Repair</span><span class="badge badge-yellow">Maintenance</span><span class="badge badge-yellow">Inspection</span>
+                </div>
+              </div>
+            </div>
+            <button class="btn btn-outline-yellow btn-md" onclick="filterByService('electrical');showPage('search');">Find Technicians</button>
+          </div>
+          <div style="background:var(--black-soft);border-radius:16px;border:1px solid var(--border);padding:36px;display:grid;grid-template-columns:1fr auto;gap:28px;align-items:center;">
+            <div style="display:flex;gap:22px;align-items:flex-start;">
+              <div style="width:72px;height:72px;border-radius:14px;background:rgba(255,107,0,.15);border:1px solid rgba(255,107,0,.3);display:flex;align-items:center;justify-content:center;font-size:34px;flex-shrink:0;">☀️</div>
+              <div>
+                <h2 style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:28px;margin-bottom:8px;color:var(--orange);">Solar Systems</h2>
+                <p style="color:var(--gray-light);line-height:1.75;max-width:520px;">Off-grid and hybrid solar installations, panel mounting, inverter setup, battery storage systems, MPPT charge controllers, and periodic solar maintenance.</p>
+                <div style="display:flex;gap:8px;margin-top:14px;flex-wrap:wrap;">
+                  <span class="badge badge-orange">Installation</span><span class="badge badge-orange">Maintenance</span><span class="badge badge-orange">Off-Grid</span><span class="badge badge-orange">Hybrid</span>
+                </div>
+              </div>
+            </div>
+            <button class="btn btn-outline-yellow btn-md" onclick="filterByService('solar');showPage('search');">Find Technicians</button>
+          </div>
+          <div style="background:var(--black-soft);border-radius:16px;border:1px solid var(--border);padding:36px;display:grid;grid-template-columns:1fr auto;gap:28px;align-items:center;">
+            <div style="display:flex;gap:22px;align-items:flex-start;">
+              <div style="width:72px;height:72px;border-radius:14px;background:rgba(34,197,94,.15);border:1px solid rgba(34,197,94,.3);display:flex;align-items:center;justify-content:center;font-size:34px;flex-shrink:0;">📷</div>
+              <div>
+                <h2 style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:28px;margin-bottom:8px;color:var(--success);">CCTV &amp; Security</h2>
+                <p style="color:var(--gray-light);line-height:1.75;max-width:520px;">Analog and IP camera installations, DVR/NVR setup, remote access configuration, electric fence installation, access control systems, and video intercom.</p>
+                <div style="display:flex;gap:8px;margin-top:14px;flex-wrap:wrap;">
+                  <span class="badge badge-green">CCTV</span><span class="badge badge-green">Access Control</span><span class="badge badge-green">Alarms</span><span class="badge badge-green">Remote View</span>
+                </div>
+              </div>
+            </div>
+            <button class="btn btn-outline-yellow btn-md" onclick="filterByService('cctv');showPage('search');">Find Technicians</button>
+          </div>
+          <div style="background:var(--black-soft);border-radius:16px;border:1px solid var(--border);padding:36px;display:grid;grid-template-columns:1fr auto;gap:28px;align-items:center;">
+            <div style="display:flex;gap:22px;align-items:flex-start;">
+              <div style="width:72px;height:72px;border-radius:14px;background:rgba(59,130,246,.15);border:1px solid rgba(59,130,246,.3);display:flex;align-items:center;justify-content:center;font-size:34px;flex-shrink:0;">📶</div>
+              <div>
+                <h2 style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:28px;margin-bottom:8px;color:var(--blue);">Internet &amp; WiFi</h2>
+                <p style="color:var(--gray-light);line-height:1.75;max-width:520px;">Router configuration, mesh WiFi deployment, structured network cabling, fibre optic termination, ISP troubleshooting, and enterprise network design.</p>
+                <div style="display:flex;gap:8px;margin-top:14px;flex-wrap:wrap;">
+                  <span class="badge badge-blue">WiFi Setup</span><span class="badge badge-blue">Fibre</span><span class="badge badge-blue">Networking</span><span class="badge badge-blue">Cabling</span>
+                </div>
+              </div>
+            </div>
+            <button class="btn btn-outline-yellow btn-md" onclick="filterByService('internet');showPage('search');">Find Technicians</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+  <footer id="services-footer"></footer>
+</div>
+
+<!-- ░░░░░░ PRICING PAGE ░░░░░░ -->
+<div id="page-pricing" class="page">
+  <div style="padding-top:68px;">
+    <section class="section">
+      <div class="container">
+        <div class="section-title">
+          <span class="badge badge-yellow">PRICING</span>
+          <h2>Transparent, Fair Pricing</h2>
+          <p>All prices are indicative estimates. Technicians provide final quotes before work begins. Payment via M-Pesa after job completion — no upfront fees.</p>
+        </div>
+        <div id="pricing-full"></div>
+        <div style="background:rgba(255,214,0,.08);border:1px solid rgba(255,214,0,.3);border-radius:14px;padding:32px;text-align:center;margin-top:40px;">
+          <h3 style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:28px;margin-bottom:10px;">Need a Custom Quote?</h3>
+          <p style="color:var(--gray-light);max-width:480px;margin:0 auto 24px;line-height:1.75;">Large commercial projects or specialized installations? Contact us for a tailored on-site assessment.</p>
+          <button class="btn btn-primary btn-lg" onclick="showPage('contact')">Get Custom Quote</button>
+        </div>
+      </div>
+    </section>
+  </div>
+  <footer id="pricing-footer"></footer>
+</div>
+
+<!-- ░░░░░░ ABOUT PAGE ░░░░░░ -->
+<div id="page-about" class="page">
+  <div style="padding-top:68px;">
+    <section class="section">
+      <div class="container">
+        <div class="section-title">
+          <span class="badge badge-yellow">ABOUT US</span>
+          <h2>Built on Trust,<br/>Powered by <span style="color:var(--yellow)">Expertise</span></h2>
+          <p>QuickFix Technicians was founded to solve a simple problem: finding a reliable, fairly-priced technician in Nairobi shouldn't be hard.</p>
+        </div>
+        <div class="grid-4" style="margin-bottom:56px;">
+          <div class="trust-card"><div class="trust-icon">🛡️</div><h3 style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:20px;margin-bottom:8px;">Verified Technicians</h3><p style="color:var(--gray-light);font-size:14px;line-height:1.7;">Every technician submits a national ID, professional certificates, and passes a background check before joining.</p></div>
+          <div class="trust-card"><div class="trust-icon">⭐</div><h3 style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:20px;margin-bottom:8px;">Quality Guaranteed</h3><p style="color:var(--gray-light);font-size:14px;line-height:1.7;">We monitor every completion. If you're unsatisfied, we'll send another technician at no extra cost.</p></div>
+          <div class="trust-card"><div class="trust-icon">⚡</div><h3 style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:20px;margin-bottom:8px;">Fast Response</h3><p style="color:var(--gray-light);font-size:14px;line-height:1.7;">Average dispatch under 60 minutes for standard jobs. Emergency requests handled within 30 minutes.</p></div>
+          <div class="trust-card"><div class="trust-icon">💵</div><h3 style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:20px;margin-bottom:8px;">Fair Pricing</h3><p style="color:var(--gray-light);font-size:14px;line-height:1.7;">Transparent pricing, no hidden fees. Pay only via M-Pesa after the job is done to your satisfaction.</p></div>
+        </div>
+        <div style="background:var(--black-soft);border-radius:16px;border:1px solid var(--border);padding:48px;text-align:center;margin-bottom:40px;">
+          <div style="font-size:48px;margin-bottom:16px;">🔧</div>
+          <h2 style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:36px;margin-bottom:12px;">Are You a Technician?</h2>
+          <p style="color:var(--gray-light);max-width:520px;margin:0 auto 28px;line-height:1.75;">Join 850+ verified professionals earning a steady income on QuickFix. Get jobs delivered to you, build your reputation, and grow your business.</p>
+          <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;">
+            <button class="btn btn-primary btn-lg" onclick="showPage('tech-signup')">💼 Join as Technician</button>
+            <button class="btn btn-ghost btn-lg" onclick="showPage('contact')">Learn More</button>
+          </div>
+        </div>
+        <div class="grid-3">
+          <div style="text-align:center;padding:28px 20px;background:var(--black-soft);border:1px solid var(--border);border-radius:14px;"><div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:44px;color:var(--yellow);">2,400+</div><div style="color:var(--gray-light);margin-top:6px;">Jobs Completed</div></div>
+          <div style="text-align:center;padding:28px 20px;background:var(--black-soft);border:1px solid var(--border);border-radius:14px;"><div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:44px;color:var(--yellow);">850+</div><div style="color:var(--gray-light);margin-top:6px;">Verified Technicians</div></div>
+          <div style="text-align:center;padding:28px 20px;background:var(--black-soft);border:1px solid var(--border);border-radius:14px;"><div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:44px;color:var(--yellow);">4.8★</div><div style="color:var(--gray-light);margin-top:6px;">Average Rating</div></div>
+        </div>
+      </div>
+    </section>
+  </div>
+  <footer id="about-footer"></footer>
+</div>
+
+<!-- ░░░░░░ CONTACT PAGE ░░░░░░ -->
+<div id="page-contact" class="page">
+  <div style="padding-top:68px;">
+    <section class="section">
+      <div class="container">
+        <div class="section-title">
+          <span class="badge badge-yellow">CONTACT US</span>
+          <h2>Get in Touch</h2>
+          <p>Questions? Custom quote? Emergency? We're here 7 days a week.</p>
+        </div>
+        <div class="grid-2" style="align-items:start;">
+          <div>
+            <div class="contact-item"><div class="contact-icon-box">📞</div><div><div class="contact-label">Phone / WhatsApp</div><div class="contact-val">0800 QUICKFIX (Toll Free)<br/>+254 700 123 456</div></div></div>
+            <div class="contact-item"><div class="contact-icon-box">✉️</div><div><div class="contact-label">Email</div><div class="contact-val">hello@quickfixkenya.co.ke<br/>support@quickfixkenya.co.ke</div></div></div>
+            <div class="contact-item"><div class="contact-icon-box">📍</div><div><div class="contact-label">Office</div><div class="contact-val">ABC Place, Waiyaki Way<br/>Westlands, Nairobi, Kenya</div></div></div>
+            <div class="contact-item"><div class="contact-icon-box">🕐</div><div><div class="contact-label">Working Hours</div><div class="contact-val">Mon–Sat: 7:00 AM – 8:00 PM<br/>Sunday: 9:00 AM – 5:00 PM<br/><strong style="color:var(--danger);">Emergency: 24/7</strong></div></div></div>
+            <div class="map-placeholder">
+              <div style="font-size:36px;">🗺️</div>
+              <div>Google Maps — Westlands, Nairobi</div>
+              <div style="font-size:12px;">Click to open in Maps</div>
+            </div>
+          </div>
+          <div style="background:var(--black-soft);border:1px solid var(--border);border-radius:16px;padding:32px;" id="contact-form-wrap">
+            <h3 style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:26px;margin-bottom:24px;">Send a Message</h3>
+            <div class="form-group"><label class="form-label">Full Name</label><input class="form-input" id="c-name" placeholder="Your name"/></div>
+            <div class="form-group"><label class="form-label">Email</label><input class="form-input" id="c-email" type="email" placeholder="you@email.com"/></div>
+            <div class="form-group"><label class="form-label">Subject</label>
+              <select class="form-select" id="c-subject">
+                <option>General Enquiry</option><option>Custom Quote</option><option>Technician Partnership</option><option>Complaint / Feedback</option><option>Emergency Support</option>
+              </select>
+            </div>
+            <div class="form-group"><label class="form-label">Message</label><textarea class="form-textarea" id="c-msg" rows="5" placeholder="Describe how we can help you…"></textarea></div>
+            <button class="btn btn-primary btn-md" style="width:100%;" onclick="submitContact()">Send Message</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+  <footer id="contact-footer"></footer>
+</div>
+
+<!-- ░░░░░░ REQUEST SERVICE PAGE ░░░░░░ -->
+<div id="page-request" class="page">
+  <div style="padding-top:68px;">
+    <div class="container" style="padding-top:48px;padding-bottom:60px;max-width:720px;">
+      <span class="badge badge-yellow">REQUEST SERVICE</span>
+      <h1 style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:38px;margin:12px 0 8px;">Describe Your Problem</h1>
+      <p style="color:var(--gray-light);margin-bottom:36px;">Fill in the details below and we'll auto-match you with the best available technician nearby.</p>
+
+      <!-- Step progress -->
+      <div class="step-progress">
+        <div class="step-dot active" id="sp1">1</div>
+        <div class="step-line inactive" id="sl1"></div>
+        <div class="step-dot inactive" id="sp2">2</div>
+        <div class="step-line inactive" id="sl2"></div>
+        <div class="step-dot inactive" id="sp3">3</div>
+        <span style="margin-left:12px;font-size:13px;color:var(--gray-light);" id="step-label">Step 1 of 3 — Your Details</span>
+      </div>
+
+      <div style="background:var(--black-soft);border:1px solid var(--border);border-radius:16px;padding:36px;">
+        <!-- Step 1 -->
+        <div id="req-step-1">
+          <div class="emergency-toggle" id="emerg-toggle" onclick="toggleEmergency()">
+            <div style="display:flex;align-items:center;gap:12px;">
+              <span style="font-size:24px;">🚨</span>
+              <div><div style="font-weight:700;" id="emerg-label">Emergency Request</div><div style="font-size:13px;color:var(--gray-light);">Technician dispatched within 1 hour</div></div>
+            </div>
+            <div class="toggle-switch" id="emerg-switch"><div class="toggle-knob"></div></div>
+          </div>
+          <div class="form-group"><label class="form-label">Full Name</label><input class="form-input" id="r-name" placeholder="Your full name"/></div>
+          <div class="form-group"><label class="form-label">Phone Number</label><input class="form-input" id="r-phone" type="tel" placeholder="+254 7XX XXX XXX"/></div>
+          <div class="form-group"><label class="form-label">Location</label>
+            <select class="form-select" id="r-loc">
+              <option value="">-- Select your area --</option>
+              <option>Westlands</option><option>Kilimani</option><option>Karen</option><option>Embakasi</option><option>Kasarani</option><option>Kileleshwa</option><option>Lavington</option><option>Ngong Road</option><option>CBD</option><option>Thika Road</option><option>Lang'ata</option><option>South B</option><option>Ruaka</option><option>Kikuyu</option>
+            </select>
+          </div>
+          <div class="form-group"><label class="form-label">Service Type</label>
+            <select class="form-select" id="r-svc">
+              <option value="electrical">⚡ Electrical</option>
+              <option value="solar">☀️ Solar Systems</option>
+              <option value="cctv">📷 CCTV &amp; Security</option>
+              <option value="internet">📶 Internet &amp; WiFi</option>
+            </select>
+          </div>
+          <div class="form-group"><label class="form-label">Describe the Problem</label><textarea class="form-textarea" id="r-desc" rows="4" placeholder="e.g. Power keeps tripping in bedroom — suspect faulty wiring. Need urgent check and possible socket replacement."></textarea></div>
+          <div class="upload-area">
+            <div style="font-size:32px;margin-bottom:8px;">📎</div>
+            <div style="font-weight:600;margin-bottom:4px;">Upload Photos (Optional)</div>
+            <div style="font-size:13px;color:var(--gray-light);">Click to attach images of the issue — JPG, PNG up to 10MB each</div>
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div id="req-step-2" class="hidden">
+          <h3 style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:24px;margin-bottom:20px;">Choose Date &amp; Time</h3>
+          <div class="form-group"><label class="form-label">Preferred Date</label><input class="form-input" id="r-date" type="date"/></div>
+          <label class="form-label" style="margin-bottom:12px;">Available Time Slots</label>
+          <div class="slots-grid">
+            <div class="time-slot" onclick="selectSlot(this)">8:00 AM</div>
+            <div class="time-slot" onclick="selectSlot(this)">10:00 AM</div>
+            <div class="time-slot booked">12:00 PM</div>
+            <div class="time-slot" onclick="selectSlot(this)">2:00 PM</div>
+            <div class="time-slot" onclick="selectSlot(this)">4:00 PM</div>
+            <div class="time-slot" onclick="selectSlot(this)">6:00 PM</div>
+          </div>
+          <h3 style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:22px;margin:24px 0 16px;">Auto-Matched Technicians</h3>
+          <div id="matched-techs"></div>
+        </div>
+
+        <!-- Step 3 -->
+        <div id="req-step-3" class="hidden">
+          <h3 style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:24px;margin-bottom:20px;">Confirm Your Request</h3>
+          <div id="req-summary" style="border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-bottom:20px;"></div>
+          <div style="background:rgba(255,214,0,.08);border:1px solid rgba(255,214,0,.3);border-radius:10px;padding:16px;font-size:14px;margin-bottom:0;">
+            <strong style="color:var(--yellow);">💳 M-Pesa Payment:</strong> Pay only after the technician completes the job to your satisfaction. No upfront payment required.
+          </div>
+        </div>
+
+        <div style="display:flex;justify-content:space-between;margin-top:28px;gap:12px;">
+          <button class="btn btn-ghost btn-md" id="req-back-btn" onclick="reqBack()" style="visibility:hidden;">← Back</button>
+          <button class="btn btn-primary btn-md" id="req-next-btn" onclick="reqNext()">Continue →</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ░░░░░░ BOOKING PAGE ░░░░░░ -->
+<div id="page-booking" class="page">
+  <div style="padding-top:68px;">
+    <div class="container" style="padding-top:48px;padding-bottom:60px;max-width:640px;">
+      <span class="badge badge-yellow">BOOKING</span>
+      <h1 style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:38px;margin:12px 0 8px;">Book James Mwangi</h1>
+      <div style="display:flex;align-items:center;gap:10px;color:var(--gray-light);font-size:14px;margin-bottom:32px;">
+        <span>⭐ 4.9</span><span>•</span><span>📍 Westlands</span><span>•</span><span style="color:var(--yellow);">KSh 2,000–5,000</span>
+      </div>
+      <div style="background:var(--black-soft);border:1px solid var(--border);border-radius:16px;padding:36px;" id="booking-form-wrap">
+        <div class="form-group"><label class="form-label">Select Date</label><input class="form-input" id="b-date" type="date"/></div>
+        <label class="form-label" style="margin-bottom:12px;">Available Time Slots</label>
+        <div class="slots-grid" style="margin-bottom:24px;">
+          <div class="time-slot" onclick="selectSlot(this)">8:00 AM</div>
+          <div class="time-slot" onclick="selectSlot(this)">10:00 AM</div>
+          <div class="time-slot booked">12:00 PM</div>
+          <div class="time-slot" onclick="selectSlot(this)">2:00 PM</div>
+          <div class="time-slot" onclick="selectSlot(this)">4:00 PM</div>
+          <div class="time-slot" onclick="selectSlot(this)">6:00 PM</div>
+        </div>
+        <div style="background:rgba(255,214,0,.08);border:1px solid rgba(255,214,0,.3);border-radius:10px;padding:16px;font-size:14px;margin-bottom:24px;">
+          <strong style="color:var(--yellow);">💰 Estimated Cost: KSh 2,000–5,000</strong><br/>
+          <span style="color:var(--gray-light);">Final quote provided on-site before work begins. Payment via M-Pesa.</span>
+        </div>
+        <button class="btn btn-primary btn-lg" style="width:100%;" onclick="confirmBooking()">✅ Confirm Booking</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ░░░░░░ TECH PROFILE PAGE ░░░░░░ -->
+<div id="page-profile" class="page">
+  <div style="padding-top:68px;">
+    <div class="container" style="padding:40px 24px 60px;" id="profile-container"></div>
+  </div>
+</div>
+
+<!-- ░░░░░░ LOGIN PAGE ░░░░░░ -->
+<div id="page-login" class="page auth-page">
+  <div class="auth-box">
+    <div class="auth-logo">⚡</div>
+    <h1 class="auth-title">Sign In to QuickFix</h1>
+    <div class="auth-card">
+      <p style="font-size:13px;color:var(--gray-light);margin-bottom:14px;text-align:center;">Select a role to demo different dashboards</p>
+      <div class="role-switcher">
+        <button class="role-btn active" id="role-customer" onclick="setRole('customer')">Customer</button>
+        <button class="role-btn" id="role-technician" onclick="setRole('technician')">Technician</button>
+        <button class="role-btn" id="role-admin" onclick="setRole('admin')">Admin</button>
+      </div>
+      <div class="form-group"><label class="form-label">Email</label><input class="form-input" id="l-email" placeholder="you@email.com" type="email"/></div>
+      <div class="form-group"><label class="form-label">Password</label><input class="form-input" id="l-pass" placeholder="••••••••" type="password"/></div>
+      <div style="display:flex;justify-content:flex-end;margin-bottom:20px;"><span style="font-size:13px;color:var(--yellow);cursor:pointer;">Forgot password?</span></div>
+      <button class="btn btn-primary btn-md" style="width:100%;" onclick="doLogin()">Sign In</button>
+      <div style="margin-top:18px;text-align:center;font-size:14px;color:var(--gray-light);">No account? <span style="color:var(--yellow);cursor:pointer;" onclick="showPage('tech-signup')">Register as Technician</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ░░░░░░ TECH SIGNUP PAGE ░░░░░░ -->
+<div id="page-tech-signup" class="page">
+  <div style="padding-top:68px;">
+    <div class="container" style="padding-top:48px;padding-bottom:60px;max-width:640px;">
+      <span class="badge badge-yellow">JOIN US</span>
+      <h1 style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:38px;margin:12px 0 8px;">Technician Registration</h1>
+      <p style="color:var(--gray-light);margin-bottom:36px;">Join 850+ verified professionals earning steady income on QuickFix. Get approved in 24–48 hours.</p>
+      <div style="background:var(--black-soft);border:1px solid var(--border);border-radius:16px;padding:36px;">
+        <div style="display:flex;gap:0;border-radius:8px;overflow:hidden;border:1px solid var(--border);margin-bottom:28px;">
+          <div style="flex:1;padding:10px;text-align:center;font-size:12px;font-weight:700;background:var(--yellow);color:var(--black);" id="ts1">1. Personal Info</div>
+          <div style="flex:1;padding:10px;text-align:center;font-size:12px;font-weight:700;background:var(--gray);color:var(--gray-light);" id="ts2">2. Services &amp; Skills</div>
+          <div style="flex:1;padding:10px;text-align:center;font-size:12px;font-weight:700;background:var(--gray);color:var(--gray-light);" id="ts3">3. Documents</div>
+        </div>
+        <div id="ts-step-1">
+          <div class="form-group"><label class="form-label">Full Name</label><input class="form-input" id="ts-name" placeholder="John Mwangi"/></div>
+          <div class="form-group"><label class="form-label">Phone / WhatsApp</label><input class="form-input" id="ts-phone" type="tel" placeholder="+254 7XX XXX XXX"/></div>
+          <div class="form-group"><label class="form-label">Email</label><input class="form-input" id="ts-email" type="email" placeholder="john@email.com"/></div>
+          <div class="form-group"><label class="form-label">Primary Base Area</label>
+            <select class="form-select" id="ts-loc">
+              <option value="">-- Select area --</option>
+              <option>Westlands</option><option>Kilimani</option><option>Karen</option><option>Embakasi</option><option>Kasarani</option><option>Kileleshwa</option><option>Lavington</option><option>Ngong Road</option><option>CBD</option><option>Thika Road</option>
+            </select>
+          </div>
+        </div>
+        <div id="ts-step-2" class="hidden">
+          <label class="form-label" style="margin-bottom:14px;">Select Your Services (choose all that apply)</label>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:20px;">
+            <div class="service-toggle" id="stog-electrical" onclick="toggleServiceCheck('electrical')" style="display:flex;align-items:center;gap:10px;padding:14px;border-radius:8px;border:2px solid var(--border);cursor:pointer;transition:all .2s;">
+              <span style="font-size:20px;">⚡</span><span style="font-weight:600;font-size:14px;">Electrical</span>
+            </div>
+            <div class="service-toggle" id="stog-solar" onclick="toggleServiceCheck('solar')" style="display:flex;align-items:center;gap:10px;padding:14px;border-radius:8px;border:2px solid var(--border);cursor:pointer;transition:all .2s;">
+              <span style="font-size:20px;">☀️</span><span style="font-weight:600;font-size:14px;">Solar Systems</span>
+            </div>
+            <div class="service-toggle" id="stog-cctv" onclick="toggleServiceCheck('cctv')" style="display:flex;align-items:center;gap:10px;padding:14px;border-radius:8px;border:2px solid var(--border);cursor:pointer;transition:all .2s;">
+              <span style="font-size:20px;">📷</span><span style="font-weight:600;font-size:14px;">CCTV &amp; Security</span>
+            </div>
+            <div class="service-toggle" id="stog-internet" onclick="toggleServiceCheck('internet')" style="display:flex;align-items:center;gap:10px;padding:14px;border-radius:8px;border:2px solid var(--border);cursor:pointer;transition:all .2s;">
+              <span style="font-size:20px;">📶</span><span style="font-weight:600;font-size:14px;">Internet &amp; WiFi</span>
+            </div>
+          </div>
+          <div class="form-group"><label class="form-label">Years of Experience</label><input class="form-input" id="ts-exp" type="number" placeholder="e.g. 5"/></div>
+          <div class="form-group"><label class="form-label">Professional Bio</label><textarea class="form-textarea" id="ts-bio" rows="4" placeholder="Describe your skills, certifications, and specializations…"></textarea></div>
+        </div>
+        <div id="ts-step-3" class="hidden">
+          <p style="color:var(--gray-light);font-size:14px;margin-bottom:24px;line-height:1.75;">Upload your documents for verification. All files are securely stored and reviewed by our compliance team within 24 hours.</p>
+          <div class="upload-area" id="doc-id" onclick="toggleDocUpload('id')" style="margin-bottom:14px;">
+            <div style="font-size:28px;margin-bottom:8px;" id="doc-id-icon">🪪</div>
+            <div style="font-weight:700;margin-bottom:4px;">National ID (Front &amp; Back)</div>
+            <div style="font-size:13px;color:var(--gray-light);" id="doc-id-status">Click to upload — JPG or PDF</div>
+          </div>
+          <div class="upload-area" id="doc-cert" onclick="toggleDocUpload('cert')">
+            <div style="font-size:28px;margin-bottom:8px;" id="doc-cert-icon">📜</div>
+            <div style="font-weight:700;margin-bottom:4px;">Professional Certificates / Licenses</div>
+            <div style="font-size:13px;color:var(--gray-light);" id="doc-cert-status">Click to upload — JPG or PDF</div>
+          </div>
+          <div style="margin-top:20px;background:rgba(255,214,0,.08);border:1px solid rgba(255,214,0,.3);border-radius:8px;padding:14px;font-size:13px;color:var(--gray-light);">
+            After submission, your profile will be reviewed within <strong style="color:var(--yellow);">24–48 hours</strong>. You'll receive an SMS and email once approved.
+          </div>
+        </div>
+        <div style="display:flex;justify-content:space-between;margin-top:28px;gap:12px;">
+          <button class="btn btn-ghost btn-md" id="ts-back-btn" onclick="tsBack()" style="visibility:hidden;">← Back</button>
+          <button class="btn btn-primary btn-md" id="ts-next-btn" onclick="tsNext()">Continue →</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ░░░░░░ TECHNICIAN DASHBOARD ░░░░░░ -->
+<div id="page-tech-dashboard" class="page">
+  <div style="padding-top:68px;">
+    <div class="container" style="padding-top:36px;padding-bottom:60px;">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:16px;margin-bottom:32px;">
+        <div>
+          <span class="badge badge-yellow">TECHNICIAN PORTAL</span>
+          <h1 style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:36px;margin-top:10px;" id="tech-dash-name">Welcome!</h1>
+          <p style="color:var(--gray-light);margin-top:4px;">Manage your bookings, availability &amp; earnings.</p>
+        </div>
+        <div style="display:flex;gap:10px;align-items:center;">
+          <button class="btn btn-success btn-sm">● Set Available</button>
+          <button class="btn btn-ghost btn-sm">Pause Jobs</button>
+        </div>
+      </div>
+      <div class="grid-4" style="margin-bottom:32px;">
+        <div class="dash-stat"><div class="dash-stat-label">This Month</div><div class="dash-stat-val" style="color:var(--success);">KSh 42,500</div></div>
+        <div class="dash-stat"><div class="dash-stat-label">Jobs Completed</div><div class="dash-stat-val" style="color:var(--yellow);">28</div></div>
+        <div class="dash-stat"><div class="dash-stat-label">Upcoming</div><div class="dash-stat-val" style="color:var(--orange);">4</div></div>
+        <div class="dash-stat"><div class="dash-stat-label">Rating</div><div class="dash-stat-val" style="color:var(--yellow);">4.9 ★</div></div>
+      </div>
+      <div style="background:var(--black-soft);border:1px solid var(--border);border-radius:14px;overflow:hidden;">
+        <div style="padding:20px 24px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;">
+          <h3 style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:22px;">My Bookings</h3>
+          <span class="badge badge-yellow">4 Active</span>
+        </div>
+        <div class="booking-row">
+          <div style="flex:1;min-width:160px;"><div style="font-weight:700;">Sarah Kiptoo</div><div style="color:var(--gray-light);font-size:13px;">Electrical Wiring • Kilimani</div></div>
+          <div style="color:var(--gray-light);font-size:13px;min-width:140px;">📅 Today, 2:00 PM</div>
+          <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;color:var(--success);">KSh 4,500</div>
+          <span class="badge badge-green">confirmed</span>
+          <button class="btn btn-ghost btn-sm">View</button>
+        </div>
+        <div class="booking-row">
+          <div style="flex:1;min-width:160px;"><div style="font-weight:700;">David Omondi</div><div style="color:var(--gray-light);font-size:13px;">Solar Maintenance • Karen</div></div>
+          <div style="color:var(--gray-light);font-size:13px;min-width:140px;">📅 Tomorrow, 10:00 AM</div>
+          <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;color:var(--success);">KSh 6,000</div>
+          <span class="badge badge-yellow">pending</span>
+          <div style="display:flex;gap:6px;"><button class="btn btn-success btn-sm">Accept</button><button class="btn btn-ghost btn-sm">Decline</button></div>
+        </div>
+        <div class="booking-row">
+          <div style="flex:1;min-width:160px;"><div style="font-weight:700;">Rose Njeri</div><div style="color:var(--gray-light);font-size:13px;">DB Board Check • Lavington</div></div>
+          <div style="color:var(--gray-light);font-size:13px;min-width:140px;">📅 Wed, 9:00 AM</div>
+          <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;color:var(--success);">KSh 3,000</div>
+          <span class="badge badge-green">confirmed</span>
+          <button class="btn btn-ghost btn-sm">View</button>
+        </div>
+        <div class="booking-row">
+          <div style="flex:1;min-width:160px;"><div style="font-weight:700;">John Maina</div><div style="color:var(--gray-light);font-size:13px;">Emergency Wiring • Westlands</div></div>
+          <div style="color:var(--gray-light);font-size:13px;min-width:140px;">📅 Thu, 4:00 PM</div>
+          <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;color:var(--gray-mid);">KSh 7,500</div>
+          <span class="badge" style="background:var(--gray);color:var(--gray-light);">completed</span>
+          <button class="btn btn-ghost btn-sm">Receipt</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer id="tdash-footer"></footer>
+</div>
+
+<!-- ░░░░░░ ADMIN DASHBOARD ░░░░░░ -->
+<div id="page-admin" class="page">
+  <div style="padding-top:68px;">
+    <div class="container" style="padding-top:36px;padding-bottom:60px;">
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;margin-bottom:28px;">
+        <div>
+          <span class="badge badge-red">ADMIN PANEL</span>
+          <h1 style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:36px;margin-top:10px;">Platform Dashboard</h1>
+        </div>
+        <button class="btn btn-ghost btn-sm">⚙️ Settings</button>
+      </div>
+      <div class="tab-bar">
+        <button class="tab-btn active" onclick="switchAdminTab('overview',this)">Overview</button>
+        <button class="tab-btn" onclick="switchAdminTab('technicians',this)">Technicians</button>
+        <button class="tab-btn" onclick="switchAdminTab('bookings',this)">Bookings</button>
+        <button class="tab-btn" onclick="switchAdminTab('users',this)">Users</button>
+      </div>
+      <div id="admin-overview">
+        <div class="grid-4" style="margin-bottom:28px;">
+          <div class="dash-stat"><div class="dash-stat-label">Monthly Revenue</div><div class="dash-stat-val" style="color:var(--success);">KSh 842K</div><div style="font-size:12px;color:var(--success);margin-top:4px;">▲ 18% vs last month</div></div>
+          <div class="dash-stat"><div class="dash-stat-label">Active Bookings</div><div class="dash-stat-val" style="color:var(--yellow);">47</div><div style="font-size:12px;color:var(--gray-light);margin-top:4px;">Right now</div></div>
+          <div class="dash-stat"><div class="dash-stat-label">Technicians</div><div class="dash-stat-val" style="color:var(--orange);">851</div><div style="font-size:12px;color:var(--orange);margin-top:4px;">+12 pending approval</div></div>
+          <div class="dash-stat"><div class="dash-stat-label">Customers</div><div class="dash-stat-val" style="color:var(--blue);">3,240</div><div style="font-size:12px;color:var(--gray-light);margin-top:4px;">+84 today</div></div>
+        </div>
+        <div class="grid-2" style="gap:20px;">
+          <div style="background:var(--black-soft);border:1px solid var(--border);border-radius:14px;overflow:hidden;">
+            <div style="padding:18px 24px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;">
+              <h3 style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:20px;">Pending Applications</h3>
+              <span class="badge badge-orange">3 Pending</span>
+            </div>
+            <div class="pending-row">
+              <div style="width:38px;height:38px;border-radius:8px;background:var(--gray);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;">👷</div>
+              <div style="flex:1;"><div style="font-weight:700;font-size:14px;">Michael Njoroge</div><div style="color:var(--gray-light);font-size:12px;">Electrical • Thika Road • 2 hrs ago</div></div>
+              <span class="badge badge-orange">Partial Docs</span>
+              <div style="display:flex;gap:6px;"><button class="btn btn-success btn-sm">✓ Approve</button><button class="btn btn-danger btn-sm">✕</button></div>
+            </div>
+            <div class="pending-row">
+              <div style="width:38px;height:38px;border-radius:8px;background:var(--gray);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;">👩‍🔧</div>
+              <div style="flex:1;"><div style="font-weight:700;font-size:14px;">Agnes Wambui</div><div style="color:var(--gray-light);font-size:12px;">Solar • Ruaka • 5 hrs ago</div></div>
+              <span class="badge badge-green">Docs Complete</span>
+              <div style="display:flex;gap:6px;"><button class="btn btn-success btn-sm">✓ Approve</button><button class="btn btn-danger btn-sm">✕</button></div>
+            </div>
+            <div class="pending-row">
+              <div style="width:38px;height:38px;border-radius:8px;background:var(--gray);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;">👨‍💻</div>
+              <div style="flex:1;"><div style="font-weight:700;font-size:14px;">Hassan Abdi</div><div style="color:var(--gray-light);font-size:12px;">Internet • South B • 1 day ago</div></div>
+              <span class="badge badge-green">Docs Complete</span>
+              <div style="display:flex;gap:6px;"><button class="btn btn-success btn-sm">✓ Approve</button><button class="btn btn-danger btn-sm">✕</button></div>
+            </div>
+          </div>
+          <div style="background:var(--black-soft);border:1px solid var(--border);border-radius:14px;overflow:hidden;">
+            <div style="padding:18px 24px;border-bottom:1px solid var(--border);"><h3 style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:20px;">Live Activity Feed</h3></div>
+            <div style="padding:0 24px;">
+              <div style="padding:13px 0;border-bottom:1px solid var(--border);display:flex;gap:10px;align-items:flex-start;"><span style="font-size:18px;">✅</span><div style="flex:1;font-size:13px;">James Mwangi completed Electrical job in Kilimani</div><span style="color:var(--gray-light);font-size:11px;white-space:nowrap;">5m ago</span></div>
+              <div style="padding:13px 0;border-bottom:1px solid var(--border);display:flex;gap:10px;align-items:flex-start;"><span style="font-size:18px;">📅</span><div style="flex:1;font-size:13px;">New booking: CCTV install — Karen, KSh 35,000</div><span style="color:var(--gray-light);font-size:11px;white-space:nowrap;">12m ago</span></div>
+              <div style="padding:13px 0;border-bottom:1px solid var(--border);display:flex;gap:10px;align-items:flex-start;"><span style="font-size:18px;">⭐</span><div style="flex:1;font-size:13px;">Sarah Kiptoo left 5-star review for Grace Wanjiku</div><span style="color:var(--gray-light);font-size:11px;white-space:nowrap;">23m ago</span></div>
+              <div style="padding:13px 0;border-bottom:1px solid var(--border);display:flex;gap:10px;align-items:flex-start;"><span style="font-size:18px;">🆕</span><div style="flex:1;font-size:13px;">New customer registered from Embakasi</div><span style="color:var(--gray-light);font-size:11px;white-space:nowrap;">31m ago</span></div>
+              <div style="padding:13px 0;display:flex;gap:10px;align-items:flex-start;"><span style="font-size:18px;">💰</span><div style="flex:1;font-size:13px;">M-Pesa payment received: KSh 8,500 — Job #2847</div><span style="color:var(--gray-light);font-size:11px;white-space:nowrap;">45m ago</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="admin-technicians" class="hidden" style="padding:60px;text-align:center;color:var(--gray-light);">
+        <div style="font-size:48px;margin-bottom:16px;">👷</div>
+        <h3 style="color:var(--white);font-size:22px;margin-bottom:8px;">Technician Management</h3>
+        <p>Full CRUD management — connect to backend to activate.</p>
+      </div>
+      <div id="admin-bookings" class="hidden" style="padding:60px;text-align:center;color:var(--gray-light);">
+        <div style="font-size:48px;margin-bottom:16px;">📅</div>
+        <h3 style="color:var(--white);font-size:22px;margin-bottom:8px;">Booking Management</h3>
+        <p>All bookings table with status, filters, and export — backend ready.</p>
+      </div>
+      <div id="admin-users" class="hidden" style="padding:60px;text-align:center;color:var(--gray-light);">
+        <div style="font-size:48px;margin-bottom:16px;">👥</div>
+        <h3 style="color:var(--white);font-size:22px;margin-bottom:8px;">User Management</h3>
+        <p>Customer accounts, roles, and access control — backend ready.</p>
+      </div>
+    </div>
+  </div>
+  <footer id="admin-footer"></footer>
+</div>
+
+<!-- ══════════════════════ TOAST ══════════════════════ -->
+<div id="toast" style="display:none;position:fixed;bottom:24px;right:24px;background:var(--black-soft);border:1px solid var(--border);border-radius:10px;padding:14px 20px;z-index:20000;display:none;align-items:center;gap:12px;min-width:280px;box-shadow:0 8px 32px rgba(0,0,0,.5);animation:slideDown .3s ease;">
+  <span id="toast-icon" style="font-size:22px;"></span>
+  <span id="toast-msg" style="font-size:14px;font-weight:500;"></span>
+</div>
+
+<!-- ══════════════════════ JAVASCRIPT ══════════════════════ -->
+<script>
+// ── DATA ──────────────────────────────────────────────────────────────────────
+const TECHNICIANS = [
+  {id:1,name:"James Mwangi",emoji:"👷",service:"electrical",services:["electrical","solar"],location:"Westlands",rating:4.9,reviews:127,experience:8,price:"KSh 2,000–5,000",available:true,verified:true,bio:"Licensed electrician with 8+ years serving Nairobi. Specializes in residential and light commercial wiring, DB board upgrades, and electrical fault diagnosis.",phone:"+254 712 345 678",badge:"Top Rated",badgeColor:"yellow"},
+  {id:2,name:"Grace Wanjiku",emoji:"👩‍🔧",service:"solar",services:["solar","electrical"],location:"Kilimani",rating:4.8,reviews:94,experience:6,price:"KSh 3,000–15,000",available:true,verified:true,bio:"Certified solar engineer. Has installed 200+ systems across Nairobi including hybrid and off-grid setups. KPLC approved contractor.",phone:"+254 722 456 789",badge:"Expert",badgeColor:"orange"},
+  {id:3,name:"Brian Otieno",emoji:"👨‍💻",service:"cctv",services:["cctv","internet"],location:"Kasarani",rating:4.7,reviews:83,experience:5,price:"KSh 2,500–8,000",available:false,verified:true,bio:"Security systems specialist. IP cameras, DVR/NVR setup, remote viewing, access control, and electric fence integration.",phone:"+254 733 567 890",badge:"Verified",badgeColor:"green"},
+  {id:4,name:"Faith Kamau",emoji:"👩‍💻",service:"internet",services:["internet","cctv"],location:"Embakasi",rating:4.9,reviews:156,experience:7,price:"KSh 1,500–4,000",available:true,verified:true,bio:"Network engineer certified by Cisco and Huawei. WiFi optimization, mesh networks, structured cabling, and fibre optic termination.",phone:"+254 744 678 901",badge:"Top Rated",badgeColor:"yellow"},
+  {id:5,name:"Peter Njoroge",emoji:"👷‍♂️",service:"electrical",services:["electrical"],location:"Karen",rating:4.6,reviews:62,experience:4,price:"KSh 1,800–4,500",available:true,verified:true,bio:"Qualified electrician for domestic and light commercial projects. Emergency and scheduled jobs.",phone:"+254 755 789 012",badge:"Verified",badgeColor:"green"},
+  {id:6,name:"Amina Hassan",emoji:"👩‍🔧",service:"solar",services:["solar"],location:"Lavington",rating:4.8,reviews:71,experience:5,price:"KSh 4,000–20,000",available:true,verified:true,bio:"Off-grid solar specialist. Hybrid solar systems, lithium battery storage, and solar water heating installations.",phone:"+254 766 890 123",badge:"Expert",badgeColor:"orange"},
+  {id:7,name:"Kevin Odhiambo",emoji:"👨‍🔧",service:"internet",services:["internet"],location:"Westlands",rating:4.7,reviews:108,experience:6,price:"KSh 1,500–3,500",available:true,verified:true,bio:"ISP-certified technician for Safaricom, Zuku, and Faiba. Mesh WiFi systems and structured cabling expert.",phone:"+254 777 901 234",badge:"Verified",badgeColor:"green"},
+  {id:8,name:"Lucy Wachira",emoji:"👩‍💻",service:"cctv",services:["cctv","electrical"],location:"Ngong Road",rating:4.5,reviews:48,experience:3,price:"KSh 2,000–7,000",available:false,verified:true,bio:"Security installations including CCTV cameras, electric fences, video intercoms, and smart locks.",phone:"+254 788 012 345",badge:"Rising Star",badgeColor:"blue"},
+];
+
+const TESTIMONIALS = [
+  {name:"Sarah Kiptoo",location:"Kilimani",rating:5,text:"James fixed our entire house wiring in one day. Very professional, clean work, and fair pricing. Highly recommended!",service:"Electrical",avatar:"👩"},
+  {name:"David Omondi",location:"Westlands",rating:5,text:"Grace installed our 2kW solar system perfectly. Already saving 70% on our electricity bills. Amazing work!",service:"Solar",avatar:"👨"},
+  {name:"Rose Njeri",location:"Karen",rating:5,text:"Brian set up our office CCTV with remote viewing on our phones. Excellent work and very competitive pricing.",service:"CCTV",avatar:"👩‍💼"},
+  {name:"John Maina",location:"Kasarani",rating:4,text:"Faith got our entire office WiFi working within 2 hours. Super fast response and great attention to detail.",service:"Internet",avatar:"👨‍💼"},
+  {name:"Zipporah Auma",location:"Lavington",rating:5,text:"Called at 9PM during a blackout — the electrician arrived within 30 minutes. Absolute lifesaver!",service:"Emergency",avatar:"👩"},
+  {name:"Michael Gitau",location:"Thika Road",rating:5,text:"Solar system installed on time and on budget. Kevin explained everything clearly and followed up after installation.",service:"Solar",avatar:"👨‍🔧"},
+];
+
+const PRICING = [
+  {service:"Electrical Wiring (per room)",range:"KSh 3,000 – 8,000",icon:"⚡",cat:"electrical",time:"2–4 hrs"},
+  {service:"Distribution Board Upgrade",range:"KSh 8,000 – 20,000",icon:"⚡",cat:"electrical",time:"4–6 hrs"},
+  {service:"Socket / Switch Replacement",range:"KSh 500 – 1,500",icon:"⚡",cat:"electrical",time:"30–60 min"},
+  {service:"Power Fault Diagnosis",range:"KSh 2,000 – 5,000",icon:"⚡",cat:"electrical",time:"1–3 hrs"},
+  {service:"Solar Panel Installation (1kW)",range:"KSh 60,000 – 90,000",icon:"☀️",cat:"solar",time:"1–2 days"},
+  {service:"Hybrid Solar System (3kW)",range:"KSh 180,000 – 280,000",icon:"☀️",cat:"solar",time:"2–3 days"},
+  {service:"Solar Maintenance & Service",range:"KSh 3,000 – 8,000",icon:"☀️",cat:"solar",time:"2–4 hrs"},
+  {service:"Inverter Installation",range:"KSh 5,000 – 15,000",icon:"☀️",cat:"solar",time:"2–4 hrs"},
+  {service:"CCTV (4 cameras + DVR)",range:"KSh 25,000 – 45,000",icon:"📷",cat:"cctv",time:"1 day"},
+  {service:"Additional CCTV Camera",range:"KSh 5,000 – 12,000",icon:"📷",cat:"cctv",time:"2–3 hrs"},
+  {service:"Access Control System",range:"KSh 15,000 – 40,000",icon:"📷",cat:"cctv",time:"4–8 hrs"},
+  {service:"Electric Fence Installation",range:"KSh 30,000 – 80,000",icon:"📷",cat:"cctv",time:"1–3 days"},
+  {service:"WiFi Router Setup",range:"KSh 1,500 – 3,000",icon:"📶",cat:"internet",time:"1–2 hrs"},
+  {service:"Mesh WiFi System",range:"KSh 8,000 – 25,000",icon:"📶",cat:"internet",time:"2–4 hrs"},
+  {service:"Structured Network Cabling",range:"KSh 5,000 – 20,000",icon:"📶",cat:"internet",time:"4–8 hrs"},
+  {service:"Fibre Optic Termination",range:"KSh 8,000 – 18,000",icon:"📶",cat:"internet",time:"3–6 hrs"},
+];
+
+const SVC_META = {
+  electrical:{label:"⚡ Electrical Services",color:"var(--yellow)"},
+  solar:{label:"☀️ Solar Systems",color:"var(--orange)"},
+  cctv:{label:"📷 CCTV & Security",color:"var(--success)"},
+  internet:{label:"📶 Internet & WiFi",color:"var(--blue)"},
+};
+
+// ── STATE ──────────────────────────────────────────────────────────────────────
+let currentUser = null;
+let selectedRole = 'customer';
+let emergencyOn = false;
+let reqStep = 1;
+let tsStep = 1;
+let selectedServices = [];
+let docUploads = {id:false,cert:false};
+
+// ── PAGE NAVIGATION ───────────────────────────────────────────────────────────
+function showPage(id) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  const target = document.getElementById('page-' + id);
+  if (target) {
+    target.classList.add('active');
+    window.scrollTo(0, 0);
+    document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+    const navMap = {services:'services',search:'search',pricing:'pricing',about:'about',contact:'contact'};
+    if (navMap[id]) {
+      document.querySelectorAll('.nav-link').forEach(l => { if(l.textContent.toLowerCase().includes(navMap[id])) l.classList.add('active'); });
+    }
+    // lazy render
+    if (id === 'search') renderSearch();
+    if (id === 'pricing') renderPricing();
+  }
+}
+
+// ── NAVBAR SCROLL ─────────────────────────────────────────────────────────────
+window.addEventListener('scroll', () => {
+  document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 20);
+});
+
+function toggleMenu() {
+  document.getElementById('mobile-menu').classList.toggle('open');
+}
+
+// ── RENDER HOME ───────────────────────────────────────────────────────────────
+function renderHomeTechs() {
+  const g = document.getElementById('home-tech-grid');
+  if (!g) return;
+  g.innerHTML = TECHNICIANS.slice(0,4).map(t => techCardHTML(t)).join('');
+}
+
+function renderHomeTestimonials() {
+  const g = document.getElementById('home-testimonials');
+  if (!g) return;
+  g.innerHTML = TESTIMONIALS.slice(0,3).map(t => `
+    <div class="testimonial-card">
+      <div class="stars">${starsHTML(t.rating)}</div>
+      <p class="t-text">"${t.text}"</p>
+      <div class="t-author">
+        <div class="t-avatar">${t.avatar}</div>
+        <div><div class="t-name">${t.name}</div><div class="t-detail">${t.location} &bull; ${t.service}</div></div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function renderHomePricing() {
+  const g = document.getElementById('home-pricing-preview');
+  if (!g) return;
+  g.innerHTML = PRICING.slice(0,4).map(p => pricingCardHTML(p)).join('');
+}
+
+// ── SEARCH ────────────────────────────────────────────────────────────────────
+function renderSearch() {
+  const q = (document.getElementById('search-q')?.value || '').toLowerCase();
+  const svc = document.getElementById('search-svc')?.value || 'all';
+  const loc = document.getElementById('search-loc')?.value || '';
+  const sortBy = document.getElementById('search-sort')?.value || 'rating';
+  const availOnly = document.getElementById('search-avail')?.checked;
+
+  let results = TECHNICIANS.filter(t => {
+    if (q && !t.name.toLowerCase().includes(q) && !t.location.toLowerCase().includes(q) && !t.services.includes(q)) return false;
+    if (svc !== 'all' && !t.services.includes(svc)) return false;
+    if (loc && t.location !== loc) return false;
+    if (availOnly && !t.available) return false;
+    return true;
+  }).sort((a,b) => {
+    if (sortBy === 'rating') return b.rating - a.rating;
+    if (sortBy === 'reviews') return b.reviews - a.reviews;
+    return b.experience - a.experience;
+  });
+
+  const g = document.getElementById('search-results');
+  const c = document.getElementById('search-count');
+  if (g) g.innerHTML = results.length ? results.map(t => techCardHTML(t)).join('') : '<div style="grid-column:1/-1;text-align:center;padding:80px 24px;color:var(--gray-light);"><div style="font-size:48px;margin-bottom:16px;">🔍</div><h3 style="color:var(--white);font-size:20px;margin-bottom:8px;">No technicians found</h3><p>Try adjusting your filters.</p></div>';
+  if (c) c.innerHTML = `Showing <strong style="color:var(--white);">${results.length}</strong> technician${results.length !== 1 ? 's' : ''}`;
+}
+
+function filterByService(svc) {
+  const el = document.getElementById('search-svc');
+  if (el) { el.value = svc; }
+}
+
+function toggleAvailLabel() {
+  const checked = document.getElementById('search-avail').checked;
+  const label = document.getElementById('avail-label');
+  const dot = document.getElementById('avail-indicator');
+  if (checked) {
+    label.style.borderColor = 'var(--success)';
+    label.style.color = 'var(--success)';
+    dot.style.background = 'var(--success)';
+  } else {
+    label.style.borderColor = 'var(--border)';
+    label.style.color = 'var(--gray-light)';
+    dot.style.background = 'var(--gray-mid)';
+  }
+}
+
+// ── TECH CARD HTML ─────────────────────────────────────────────────────────────
+function techCardHTML(t, mini) {
+  const svcBadges = t.services.map(sid => {
+    const meta = {electrical:'⚡ Electrical',solar:'☀️ Solar',cctv:'📷 CCTV',internet:'📶 Internet'};
+    const colors = {electrical:'yellow',solar:'orange',cctv:'green',internet:'blue'};
+    return `<span class="badge badge-${colors[sid]}">${meta[sid]}</span>`;
+  }).join('');
+  const badgeColor = {yellow:'badge-yellow',orange:'badge-orange',green:'badge-green',blue:'badge-blue'}[t.badgeColor] || 'badge-green';
+  return `
+  <div class="card tech-card" onclick="showProfile(${t.id})" style="cursor:pointer;">
+    <div class="tech-card-inner">
+      <div style="display:flex;gap:14px;align-items:flex-start;">
+        <div class="tech-avatar">
+          ${t.emoji}
+          ${t.verified ? '<div class="verified-badge">✓</div>' : ''}
+        </div>
+        <div class="tech-info">
+          <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
+            <span class="tech-name">${t.name}</span>
+            <span class="badge ${badgeColor}">${t.badge}</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:6px;margin-top:4px;">
+            <div class="stars">${starsHTML(t.rating)}</div>
+            <span style="font-size:13px;font-weight:700;">${t.rating}</span>
+            <span style="color:var(--gray-light);font-size:13px;">(${t.reviews})</span>
+          </div>
+        </div>
+      </div>
+      <div class="tech-services-row">${svcBadges}</div>
+      <div class="tech-meta">
+        <span>📍 ${t.location}</span>
+        <span>💼 ${t.experience}yr exp</span>
+        <span style="margin-left:auto;color:${t.available?'var(--success)':'var(--danger)'};font-weight:700;font-size:12px;">
+          <span class="avail-dot" style="background:${t.available?'var(--success)':'var(--danger)'}"></span>${t.available?'Available':'Busy'}
+        </span>
+      </div>
+      <div class="tech-ctas" onclick="event.stopPropagation()">
+        <button class="btn btn-primary btn-sm" style="flex:1;" onclick="callTech('${t.phone}')">📞 Call</button>
+        <button class="btn btn-whatsapp btn-sm" style="flex:1;" onclick="whatsappTech(${t.id})">💬 WhatsApp</button>
+      </div>
+    </div>
+  </div>`;
+}
+
+// ── PROFILE PAGE ──────────────────────────────────────────────────────────────
+function showProfile(id) {
+  const t = TECHNICIANS.find(x => x.id === id);
+  if (!t) return;
+  const colors = {electrical:'var(--yellow)',solar:'var(--orange)',cctv:'var(--success)',internet:'var(--blue)'};
+  const svcBadges = t.services.map(sid => {
+    const icons = {electrical:'⚡',solar:'☀️',cctv:'📷',internet:'📶'};
+    const labels = {electrical:'Electrical',solar:'Solar Systems',cctv:'CCTV & Security',internet:'Internet & WiFi'};
+    const c = colors[sid] || 'var(--yellow)';
+    return `<div style="display:flex;align-items:center;gap:10px;padding:12px 18px;border-radius:8px;background:${c}18;border:1px solid ${c}44;">
+      <span style="font-size:20px;">${icons[sid]}</span><span style="color:${c};font-weight:700;">${labels[sid]}</span>
+    </div>`;
+  }).join('');
+  const portfolio = ['🔆 Solar array, Karen','⚡ DB board, Westlands','📹 Office CCTV, Kilimani','🌐 Network cabling, CBD','🔌 Emergency wiring, Kasarani','💡 Lighting install, Lavington'];
+
+  const html = `
+  <button onclick="showPage('search')" style="background:none;border:none;color:var(--gray-light);cursor:pointer;display:flex;align-items:center;gap:8px;font-size:14px;font-family:'Barlow',sans-serif;margin-bottom:24px;">← Back to Search</button>
+  <div style="background:var(--black-soft);border:1px solid var(--border);border-radius:16px;overflow:hidden;">
+    <div class="profile-header">
+      <div class="profile-avatar-wrap">
+        <div class="profile-avatar">${t.emoji}</div>
+        ${t.verified?'<div class="profile-verified">✓ VERIFIED</div>':''}
+      </div>
+      <div style="flex:1;min-width:0;">
+        <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:8px;">
+          <h1 style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:36px;">${t.name}</h1>
+          <span class="badge badge-yellow">${t.badge}</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px;">
+          <div class="stars">${starsHTML(t.rating)}</div>
+          <strong>${t.rating}</strong><span style="color:var(--gray-light);">(${t.reviews} reviews)</span>
+        </div>
+        <p style="color:var(--gray-light);line-height:1.75;max-width:500px;margin-bottom:14px;">${t.bio}</p>
+        <div style="display:flex;gap:18px;flex-wrap:wrap;font-size:14px;color:var(--gray-light);">
+          <span>📍 ${t.location}, Nairobi</span>
+          <span>💼 ${t.experience} years experience</span>
+          <span style="color:${t.available?'var(--success)':'var(--danger)'};font-weight:700;">● ${t.available?'Available Now':'Currently Busy'}</span>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:10px;min-width:180px;">
+        <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:24px;color:var(--yellow);">${t.price}</div>
+        <button class="btn btn-primary btn-md" onclick="showPage('booking')">📅 Book Now</button>
+        <button class="btn btn-whatsapp btn-md" onclick="whatsappTech(${t.id})">💬 WhatsApp</button>
+        <button class="btn btn-ghost btn-md">📞 ${t.phone}</button>
+      </div>
+    </div>
+    <div class="profile-body">
+      <h3 style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:22px;margin-bottom:16px;">Services Offered</h3>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:36px;">${svcBadges}</div>
+      <h3 style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:22px;margin-bottom:16px;">Portfolio</h3>
+      <div class="portfolio-grid" style="margin-bottom:36px;">
+        ${portfolio.map(p => {
+          const [icon,...rest] = p.split(' ');
+          return `<div class="portfolio-item"><span>${icon}</span><span>${rest.join(' ')}</span></div>`;
+        }).join('')}
+      </div>
+      <h3 style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:22px;margin-bottom:16px;">Customer Reviews</h3>
+      ${TESTIMONIALS.slice(0,3).map((r,i) => `
+        <div style="padding:16px 0;${i<2?'border-bottom:1px solid var(--border);':''}">
+          <div style="display:flex;justify-content:space-between;margin-bottom:10px;flex-wrap:wrap;gap:8px;">
+            <div style="display:flex;align-items:center;gap:10px;">
+              <div style="font-size:24px;">${r.avatar}</div>
+              <div><div style="font-weight:700;font-size:14px;">${r.name}</div><div style="color:var(--gray-light);font-size:12px;">${r.location}</div></div>
+            </div>
+            <div class="stars">${starsHTML(r.rating)}</div>
+          </div>
+          <p style="color:var(--white-soft);font-size:14px;line-height:1.75;">"${r.text}"</p>
+        </div>
+      `).join('')}
+    </div>
+  </div>`;
+  document.getElementById('profile-container').innerHTML = html;
+  showPage('profile');
+}
+
+// ── PRICING ───────────────────────────────────────────────────────────────────
+function renderPricing() {
+  const g = document.getElementById('pricing-full');
+  if (!g || g.dataset.rendered) return;
+  const cats = ['electrical','solar','cctv','internet'];
+  g.innerHTML = cats.map(cat => {
+    const m = SVC_META[cat];
+    const items = PRICING.filter(p => p.cat === cat);
+    return `
+      <div style="margin-bottom:40px;">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px;padding-bottom:12px;border-bottom:2px solid ${m.color};">
+          <h3 style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:26px;color:${m.color};">${m.label}</h3>
+        </div>
+        <div class="grid-pricing">
+          ${items.map(p => pricingCardHTML(p)).join('')}
+        </div>
+      </div>`;
+  }).join('');
+  g.dataset.rendered = '1';
+}
+
+function pricingCardHTML(p) {
+  const catColors = {electrical:'var(--yellow)',solar:'var(--orange)',cctv:'var(--success)',internet:'var(--blue)'};
+  const c = catColors[p.cat] || 'var(--yellow)';
+  return `
+  <div class="pricing-card">
+    <div>
+      <div class="pricing-service">${p.service}</div>
+      <div class="pricing-time">${p.icon} ${p.time}</div>
+    </div>
+    <div class="pricing-amount" style="color:${c};">${p.range}</div>
+  </div>`;
+}
+
+// ── STARS ─────────────────────────────────────────────────────────────────────
+function starsHTML(rating) {
+  return [1,2,3,4,5].map(i => `<span class="star ${i<=Math.round(rating)?'filled':''}">★</span>`).join('');
+}
+
+// ── REQUEST FLOW ───────────────────────────────────────────────────────────────
+function toggleEmergency() {
+  emergencyOn = !emergencyOn;
+  const tog = document.getElementById('emerg-toggle');
+  const sw = document.getElementById('emerg-switch');
+  const lbl = document.getElementById('emerg-label');
+  tog.classList.toggle('on', emergencyOn);
+  sw.classList.toggle('on', emergencyOn);
+  lbl.textContent = emergencyOn ? '🚨 EMERGENCY — Priority Dispatch Active' : 'Emergency Request';
+}
+
+function setEmergency(on) {
+  emergencyOn = on;
+  if (on) {
+    const tog = document.getElementById('emerg-toggle');
+    const sw = document.getElementById('emerg-switch');
+    const lbl = document.getElementById('emerg-label');
+    if (tog) tog.classList.add('on');
+    if (sw) sw.classList.add('on');
+    if (lbl) lbl.textContent = '🚨 EMERGENCY — Priority Dispatch Active';
+  }
+}
+
+function updateStepUI() {
+  ['sp1','sp2','sp3'].forEach((id,i) => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    el.className = 'step-dot ' + (i+1 < reqStep ? 'done' : i+1 === reqStep ? 'active' : 'inactive');
+    if (i+1 < reqStep) el.textContent = '✓';
+    else el.textContent = i+1;
+  });
+  ['sl1','sl2'].forEach((id,i) => {
+    const el = document.getElementById(id);
+    if (el) el.className = 'step-line ' + (i+1 < reqStep ? 'done' : 'inactive');
+  });
+  const labels = ['Step 1 of 3 — Your Details','Step 2 of 3 — Schedule','Step 3 of 3 — Confirm'];
+  const lbl = document.getElementById('step-label');
+  if (lbl) lbl.textContent = labels[reqStep-1];
+  const backBtn = document.getElementById('req-back-btn');
+  if (backBtn) backBtn.style.visibility = reqStep > 1 ? 'visible' : 'hidden';
+  const nextBtn = document.getElementById('req-next-btn');
+  if (nextBtn) nextBtn.textContent = reqStep === 3 ? '✅ Submit Request' : 'Continue →';
+}
+
+function reqNext() {
+  if (reqStep === 1) {
+    document.getElementById('req-step-1').classList.add('hidden');
+    document.getElementById('req-step-2').classList.remove('hidden');
+    renderMatchedTechs();
+    reqStep = 2; updateStepUI();
+  } else if (reqStep === 2) {
+    document.getElementById('req-step-2').classList.add('hidden');
+    document.getElementById('req-step-3').classList.remove('hidden');
+    renderReqSummary();
+    reqStep = 3; updateStepUI();
+  } else {
+    showRequestSuccess();
+  }
+}
+
+function reqBack() {
+  if (reqStep === 2) {
+    document.getElementById('req-step-2').classList.add('hidden');
+    document.getElementById('req-step-1').classList.remove('hidden');
+    reqStep = 1; updateStepUI();
+  } else if (reqStep === 3) {
+    document.getElementById('req-step-3').classList.add('hidden');
+    document.getElementById('req-step-2').classList.remove('hidden');
+    reqStep = 2; updateStepUI();
+  }
+}
+
+function renderMatchedTechs() {
+  const svc = document.getElementById('r-svc')?.value || 'electrical';
+  const matched = TECHNICIANS.filter(t => t.services.includes(svc) && t.available).slice(0,3);
+  const g = document.getElementById('matched-techs');
+  if (!g) return;
+  g.innerHTML = matched.map(t => `
+    <div style="display:flex;align-items:center;gap:14px;padding:14px;background:var(--black-mid);border-radius:10px;border:1px solid var(--border);margin-bottom:10px;">
+      <div style="font-size:28px;">${t.emoji}</div>
+      <div style="flex:1;">
+        <div style="font-weight:700;">${t.name}</div>
+        <div style="font-size:13px;color:var(--gray-light);">${t.location} • ${t.price}</div>
+      </div>
+      <div class="stars" style="font-size:12px;">${starsHTML(t.rating)}</div>
+    </div>`).join('');
+}
+
+function renderReqSummary() {
+  const name = document.getElementById('r-name')?.value || 'Not provided';
+  const phone = document.getElementById('r-phone')?.value || 'Not provided';
+  const loc = document.getElementById('r-loc')?.value || 'Not set';
+  const svc = document.getElementById('r-svc')?.value || 'electrical';
+  const svcLabels = {electrical:'⚡ Electrical',solar:'☀️ Solar Systems',cctv:'📷 CCTV & Security',internet:'📶 Internet & WiFi'};
+  const date = document.getElementById('r-date')?.value || 'Flexible';
+  const rows = [
+    ['Name', name], ['Phone', phone], ['Location', loc],
+    ['Service', svcLabels[svc]], ['Emergency', emergencyOn ? '🚨 YES — Priority Dispatch' : 'No'],
+    ['Date', date]
+  ];
+  const g = document.getElementById('req-summary');
+  if (!g) return;
+  g.innerHTML = rows.map(([l,v]) => `
+    <div style="display:flex;justify-content:space-between;padding:12px 16px;border-bottom:1px solid var(--border);font-size:14px;">
+      <span style="color:var(--gray-light);">${l}</span>
+      <span style="font-weight:700;color:${l==='Emergency'&&emergencyOn?'var(--danger)':'var(--white)'};">${v}</span>
+    </div>`).join('');
+}
+
+function showRequestSuccess() {
+  document.getElementById('page-request').innerHTML = `
+  <div class="success-screen">
+    <div style="max-width:520px;">
+      <div class="success-icon">🎉</div>
+      <h2 style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:40px;margin-bottom:14px;">Request Submitted!</h2>
+      <p style="color:var(--gray-light);line-height:1.75;margin-bottom:32px;">We've matched you with available technicians. You'll receive an SMS and WhatsApp confirmation within 5 minutes.</p>
+      <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;">
+        <button class="btn btn-primary btn-lg" onclick="showPage('search')">View Technicians</button>
+        <button class="btn btn-ghost btn-lg" onclick="showPage('home')">Back to Home</button>
+      </div>
+    </div>
+  </div>`;
+  reqStep = 1;
+}
+
+function selectSlot(el) {
+  if (el.classList.contains('booked')) return;
+  el.closest('.slots-grid').querySelectorAll('.time-slot').forEach(s => s.classList.remove('selected'));
+  el.classList.add('selected');
+}
+
+// ── BOOKING ───────────────────────────────────────────────────────────────────
+function confirmBooking() {
+  const date = document.getElementById('b-date')?.value;
+  if (!date) { showToast('Please select a date', 'error'); return; }
+  document.getElementById('booking-form-wrap').innerHTML = `
+    <div style="text-align:center;padding:32px 0;">
+      <div style="font-size:56px;margin-bottom:20px;">🎉</div>
+      <h2 style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:34px;margin-bottom:12px;">Booking Confirmed!</h2>
+      <p style="color:var(--gray-light);margin-bottom:28px;line-height:1.75;">Your appointment with <strong style="color:var(--white);">James Mwangi</strong> is confirmed for ${date}. You'll receive SMS confirmation within minutes.</p>
+      <div style="background:var(--black-soft);border-radius:12px;border:1px solid var(--border);padding:20px;margin-bottom:28px;">
+        <div style="display:flex;gap:10px;align-items:center;margin-bottom:14px;">
+          <span style="font-size:30px;">👷</span>
+          <div><div style="font-weight:700;">James Mwangi</div><div style="color:var(--gray-light);font-size:13px;">+254 712 345 678</div></div>
+        </div>
+        <button class="btn btn-whatsapp btn-md" style="width:100%;">💬 Message on WhatsApp</button>
+      </div>
+      <button class="btn btn-primary btn-lg" onclick="showPage('home')">Back to Home</button>
+    </div>`;
+  showToast('Booking confirmed! SMS sent to your phone.', 'success');
+}
+
+// ── AUTH ──────────────────────────────────────────────────────────────────────
+function setRole(role) {
+  selectedRole = role;
+  ['customer','technician','admin'].forEach(r => {
+    document.getElementById('role-'+r)?.classList.toggle('active', r === role);
+  });
+}
+
+function doLogin() {
+  const email = document.getElementById('l-email')?.value;
+  const pass = document.getElementById('l-pass')?.value;
+  if (!email || !pass) { showToast('Please enter email and password', 'error'); return; }
+  const names = {customer:'Sarah Kiptoo',technician:'James Mwangi',admin:'Admin User'};
+  currentUser = {name:names[selectedRole], role:selectedRole, email};
+  updateNavAuth();
+  showToast(`Welcome back, ${currentUser.name.split(' ')[0]}!`, 'success');
+  if (selectedRole === 'admin') showPage('admin');
+  else if (selectedRole === 'technician') {
+    document.getElementById('tech-dash-name').textContent = `Welcome, ${currentUser.name.split(' ')[0]}!`;
+    showPage('tech-dashboard');
+  } else showPage('home');
+}
+
+function logout() {
+  currentUser = null;
+  updateNavAuth();
+  showPage('home');
+  showToast('Signed out successfully', 'info');
+}
+
+function goToDash() {
+  if (!currentUser) { showPage('login'); return; }
+  if (currentUser.role === 'admin') showPage('admin');
+  else if (currentUser.role === 'technician') showPage('tech-dashboard');
+  else showPage('home');
+}
+
+function updateNavAuth() {
+  const userArea = document.getElementById('nav-user-area');
+  const authArea = document.getElementById('nav-auth-area');
+  const dashBtn = document.getElementById('nav-dash-btn');
+  if (currentUser) {
+    userArea.classList.add('hidden');
+    authArea.classList.remove('hidden');
+    if (dashBtn) dashBtn.textContent = `👤 ${currentUser.name.split(' ')[0]}`;
+  } else {
+    userArea.classList.remove('hidden');
+    authArea.classList.add('hidden');
+  }
+}
+
+// ── TECH SIGNUP ───────────────────────────────────────────────────────────────
+function tsNext() {
+  if (tsStep === 1) {
+    document.getElementById('ts-step-1').classList.add('hidden');
+    document.getElementById('ts-step-2').classList.remove('hidden');
+    tsStep = 2; updateTsUI();
+  } else if (tsStep === 2) {
+    document.getElementById('ts-step-2').classList.add('hidden');
+    document.getElementById('ts-step-3').classList.remove('hidden');
+    tsStep = 3; updateTsUI();
+  } else {
+    submitTechSignup();
+  }
+}
+
+function tsBack() {
+  if (tsStep === 2) {
+    document.getElementById('ts-step-2').classList.add('hidden');
+    document.getElementById('ts-step-1').classList.remove('hidden');
+    tsStep = 1; updateTsUI();
+  } else if (tsStep === 3) {
+    document.getElementById('ts-step-3').classList.add('hidden');
+    document.getElementById('ts-step-2').classList.remove('hidden');
+    tsStep = 2; updateTsUI();
+  }
+}
+
+function updateTsUI() {
+  [1,2,3].forEach(i => {
+    const el = document.getElementById('ts'+i);
+    if (!el) return;
+    if (i < tsStep) { el.style.background='var(--success)'; el.style.color='var(--white)'; }
+    else if (i === tsStep) { el.style.background='var(--yellow)'; el.style.color='var(--black)'; }
+    else { el.style.background='var(--gray)'; el.style.color='var(--gray-light)'; }
+  });
+  const backBtn = document.getElementById('ts-back-btn');
+  const nextBtn = document.getElementById('ts-next-btn');
+  if (backBtn) backBtn.style.visibility = tsStep > 1 ? 'visible' : 'hidden';
+  if (nextBtn) nextBtn.textContent = tsStep === 3 ? '✅ Submit Application' : 'Continue →';
+}
+
+function toggleServiceCheck(svc) {
+  const idx = selectedServices.indexOf(svc);
+  if (idx > -1) selectedServices.splice(idx, 1);
+  else selectedServices.push(svc);
+  const el = document.getElementById('stog-'+svc);
+  const colors = {electrical:'var(--yellow)',solar:'var(--orange)',cctv:'var(--success)',internet:'var(--blue)'};
+  if (el) {
+    const on = selectedServices.includes(svc);
+    el.style.borderColor = on ? colors[svc] : 'var(--border)';
+    el.style.background = on ? colors[svc]+'1A' : 'transparent';
+  }
+}
+
+function toggleDocUpload(key) {
+  docUploads[key] = !docUploads[key];
+  const el = document.getElementById('doc-'+key);
+  const icon = document.getElementById('doc-'+key+'-icon');
+  const status = document.getElementById('doc-'+key+'-status');
+  if (docUploads[key]) {
+    el.style.borderColor = 'var(--success)';
+    el.style.background = 'rgba(34,197,94,.08)';
+    if (icon) icon.textContent = '✅';
+    if (status) { status.textContent = 'Uploaded ✓'; status.style.color = 'var(--success)'; }
+  } else {
+    el.style.borderColor = 'var(--border)';
+    el.style.background = 'transparent';
+    if (icon) icon.textContent = key === 'id' ? '🪪' : '📜';
+    if (status) { status.textContent = 'Click to upload — JPG or PDF'; status.style.color = 'var(--gray-light)'; }
+  }
+}
+
+function submitTechSignup() {
+  const name = document.getElementById('ts-name')?.value || 'Technician';
+  currentUser = {name, role:'technician'};
+  updateNavAuth();
+  showToast('Application submitted! Review within 24–48 hours.', 'success');
+  document.getElementById('tech-dash-name').textContent = `Welcome, ${name.split(' ')[0]}!`;
+  showPage('tech-dashboard');
+}
+
+// ── ADMIN TABS ─────────────────────────────────────────────────────────────────
+function switchAdminTab(tab, btn) {
+  ['overview','technicians','bookings','users'].forEach(t => {
+    document.getElementById('admin-'+t)?.classList.toggle('hidden', t !== tab);
+  });
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+}
+
+// ── CONTACT ───────────────────────────────────────────────────────────────────
+function submitContact() {
+  const wrap = document.getElementById('contact-form-wrap');
+  if (!wrap) return;
+  wrap.innerHTML = `
+    <div style="text-align:center;padding:48px 24px;">
+      <div style="font-size:52px;margin-bottom:16px;">✅</div>
+      <h3 style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:28px;margin-bottom:10px;">Message Sent!</h3>
+      <p style="color:var(--gray-light);line-height:1.75;">We'll get back to you within 2 hours during business hours. For urgent matters, WhatsApp us directly.</p>
+    </div>`;
+  showToast('Message sent! We\'ll be in touch soon.', 'success');
+}
+
+// ── UTILS ─────────────────────────────────────────────────────────────────────
+function callTech(phone) {
+  showToast(`Calling ${phone}…`, 'info');
+}
+
+function whatsappTech(id) {
+  const t = TECHNICIANS.find(x => x.id === id);
+  if (t) showToast(`Opening WhatsApp for ${t.name}…`, 'success');
+}
+
+function showToast(msg, type='info') {
+  const toast = document.getElementById('toast');
+  const icon = document.getElementById('toast-icon');
+  const msgEl = document.getElementById('toast-msg');
+  const icons = {success:'✅',error:'❌',info:'ℹ️'};
+  icon.textContent = icons[type] || 'ℹ️';
+  msgEl.textContent = msg;
+  toast.style.display = 'flex';
+  clearTimeout(window._toastTimer);
+  window._toastTimer = setTimeout(() => { toast.style.display = 'none'; }, 3200);
+}
+
+function filterSearch() { /* hero search just redirects */ }
+
+// ── FOOTER HTML ───────────────────────────────────────────────────────────────
+function buildFooter() {
+  return `
+  <div style="background:var(--black-soft);border-top:1px solid var(--border);padding:56px 0 24px;">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
+            <div style="width:34px;height:34px;background:var(--yellow);border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:16px;">⚡</div>
+            <div><div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:17px;">QuickFix</div><div style="font-size:9px;color:var(--yellow);letter-spacing:.12em;font-weight:700;">TECHNICIANS</div></div>
+          </div>
+          <p>Nairobi's most trusted platform for verified technical services — electrical, solar, CCTV, and internet.</p>
+          <div class="social-row">
+            <div class="social-btn" onclick="showToast('Follow us on WhatsApp!','success')">💬</div>
+            <div class="social-btn" onclick="showToast('Follow us on Twitter!','info')">🐦</div>
+            <div class="social-btn" onclick="showToast('Find us on Facebook!','info')">📘</div>
+            <div class="social-btn" onclick="showToast('Follow on Instagram!','info')">📸</div>
+          </div>
+        </div>
+        <div>
+          <h4>Services</h4>
+          <span class="footer-link" onclick="filterByService('electrical');showPage('search')">⚡ Electrical</span>
+          <span class="footer-link" onclick="filterByService('solar');showPage('search')">☀️ Solar Systems</span>
+          <span class="footer-link" onclick="filterByService('cctv');showPage('search')">📷 CCTV & Security</span>
+          <span class="footer-link" onclick="filterByService('internet');showPage('search')">📶 Internet & WiFi</span>
+        </div>
+        <div>
+          <h4>Platform</h4>
+          <span class="footer-link" onclick="showPage('search')">Find Technicians</span>
+          <span class="footer-link" onclick="showPage('request')">Request Service</span>
+          <span class="footer-link" onclick="showPage('pricing')">Pricing Guide</span>
+          <span class="footer-link" onclick="showPage('tech-signup')">Join as Technician</span>
+          <span class="footer-link" onclick="showPage('login')">Login / Sign Up</span>
+        </div>
+        <div>
+          <h4>Company</h4>
+          <span class="footer-link" onclick="showPage('about')">About Us</span>
+          <span class="footer-link" onclick="showPage('contact')">Contact</span>
+          <span class="footer-link">Privacy Policy</span>
+          <span class="footer-link">Terms of Service</span>
+          <span class="footer-link">Emergency: 0800 QUICKFIX</span>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span class="footer-copy">© 2025 QuickFix Technicians Ltd. All rights reserved. Nairobi, Kenya.</span>
+        <div class="lang-btns">
+          <span class="lang-btn" onclick="showToast('English selected','info')">🇬🇧 English</span>
+          <span class="lang-btn" onclick="showToast('Kiswahili imechaguliwa!','success')">🇰🇪 Kiswahili</span>
+        </div>
+      </div>
+    </div>
+  </div>`;
+}
+
+// ── INIT ──────────────────────────────────────────────────────────────────────
+document.addEventListener('DOMContentLoaded', () => {
+  // Inject footers
+  ['home-footer','search-footer','services-footer','pricing-footer','about-footer','contact-footer','tdash-footer','admin-footer'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.outerHTML = buildFooter().replace('<div style=', `<div id="${id}" style=`);
+  });
+
+  renderHomeTechs();
+  renderHomeTestimonials();
+  renderHomePricing();
+
+  // Set min date for date inputs
+  const today = new Date().toISOString().split('T')[0];
+  ['r-date','b-date'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.min = today;
+  });
+});
+</script>
+</body>
+</html>
